@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  ai-chat-bot-tpl:
+    container_name: ai-chat-bot-tpl
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./
+        target: /usr/src/app
+    command: sh -c "npm run dev"
+    ports:
+      - 3000:3000
+    stdin_open: true
