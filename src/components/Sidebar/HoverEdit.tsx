@@ -16,8 +16,8 @@ const HoverEdit = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <SidebarMenuAction>
-          <EllipsisVertical size={16} className="ml-1" />
+        <SidebarMenuAction className="hover:bg-transparent ">
+          <EllipsisVertical size={16} className="ml-5 text-muted-foreground" />
         </SidebarMenuAction>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="right" align="start">

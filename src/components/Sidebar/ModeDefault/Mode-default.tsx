@@ -12,6 +12,12 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
 } from "@/components/ui/sidebar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 import Room from "./Room";
 import { RoomType } from "../../demo-data-types";
@@ -64,9 +70,22 @@ const ModeDefault = () => {
             </CollapsibleTrigger>
             <CollapsibleContent>
               <SidebarMenuSub>
-                {groupedByDate[date].map((room: RoomType) => (
-                  <Room {...room} key={room.id} />
-                ))}
+                {groupedByDate[date].map((room: RoomType) =>
+                  room.prompt ? (
+                    <TooltipProvider key={room.id}>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Room {...room} />
+                        </TooltipTrigger>
+                        <TooltipContent className="z-50 w-auto p-3 text-xs">
+                          <p>{room.prompt}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  ) : (
+                    <Room {...room} key={room.id} />
+                  )
+                )}
               </SidebarMenuSub>
             </CollapsibleContent>
           </SidebarMenuItem>
