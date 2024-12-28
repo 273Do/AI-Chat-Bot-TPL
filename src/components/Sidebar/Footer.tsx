@@ -17,16 +17,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
+import { ModeToggle } from "../mode-toggle";
 const Footer = () => {
   return (
-    <SidebarFooter>
-      <SidebarMenu>
+    <SidebarMenu>
+      <SidebarFooter>
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton>
                 <User2 /> Username
-                {/* <ChevronUp className="ml-auto" /> */}
                 <ChevronsUpDown className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
@@ -52,7 +53,9 @@ const Footer = () => {
                   <Settings />
                   設定
                 </DropdownMenuItem>
-                <DropdownMenuItem>テーマ</DropdownMenuItem>
+                <DropdownMenuLabel className="relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
+                  <ModeToggle />
+                </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
 
@@ -63,8 +66,8 @@ const Footer = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         </SidebarMenuItem>
-      </SidebarMenu>
-    </SidebarFooter>
+      </SidebarFooter>
+    </SidebarMenu>
   );
 };
 
