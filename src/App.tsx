@@ -6,7 +6,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 function App() {
   return (
     <>
-      <SidebarProvider>
+      <SidebarProvider defaultOpen>
         <AppSidebar />
         <main>
           <SidebarTrigger />

@@ -1,0 +1,79 @@
+import React from "react";
+
+import { Hash } from "lucide-react";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+} from "@/components/ui/sidebar";
+
+import Room from "./Room";
+import { RoomType } from "../../demo-data-types";
+import roomsData from "../../demo-data.json";
+
+// defaultモード時のサイドバー表示
+const ModeDefault = () => {
+  // const roomsData: RoomType[] = roomsData;
+
+  const groupedByDate = roomsData
+    .slice()
+    .reverse()
+    .reduce((acc: { [key: string]: RoomType[] }, item) => {
+      const date = item.updated; // 日付でグループ化
+      if (!acc[date]) {
+        acc[date] = []; // 新しい日付のキーを初期化
+      }
+      acc[date].push(item as RoomType); // 同じ日付に追加
+      return acc;
+    }, {});
+
+  return (
+    <>
+      {Object.keys(groupedByDate).map((date) => (
+        <Collapsible defaultOpen className="group/collapsible">
+          <SidebarMenuItem key={date}>
+            <CollapsibleTrigger asChild>
+              {/* MEMO: sidebarが閉じているときのみ */}
+              {/* <HoverCard>
+                <HoverCardTrigger>
+                  <SidebarMenuButton className="text-xs text-muted-foreground">
+                    <MessageSquare size={16} />
+                    {date}
+                  </SidebarMenuButton>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-auto p-3 text-xs">
+                  <p className="mb-2 text-muted-foreground">{date}</p>
+                  <div>
+                    {groupedByDate[date].map((room: RoomType) => (
+                      <div key={room.id}>{room.name}</div>
+                    ))}
+                  </div>
+                </HoverCardContent>
+              </HoverCard> */}
+              {/* MEMO: sidebarが開いているとき */}
+              <SidebarMenuButton className="text-xs text-muted-foreground">
+                <Hash size={16} />
+                {date}
+              </SidebarMenuButton>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>
+                {groupedByDate[date].map((room: RoomType) => (
+                  <Room {...room} key={room.id} />
+                ))}
+              </SidebarMenuSub>
+            </CollapsibleContent>
+          </SidebarMenuItem>
+        </Collapsible>
+      ))}
+    </>
+  );
+};
+
+export default ModeDefault;

@@ -4,13 +4,25 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
-  SidebarRail,
-  SidebarSeparator,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 import * as SB from "@/components/Sidebar/index";
 
+// サイドバーのコンポーネント
 export function AppSidebar() {
+  const {
+    state,
+    open,
+    setOpen,
+    openMobile,
+    setOpenMobile,
+    isMobile,
+    toggleSidebar,
+  } = useSidebar();
+
+  console.log(open);
+
   return (
     <Sidebar collapsible="icon">
       <SB.Header />
@@ -20,12 +32,10 @@ export function AppSidebar() {
             <SidebarMenu>
               <SB.ModeDefault />
             </SidebarMenu>
-            <SidebarSeparator />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SB.Footer />
-      <SidebarRail />
     </Sidebar>
   );
 }

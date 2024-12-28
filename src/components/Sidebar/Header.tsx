@@ -14,6 +14,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
+// サイドバーのヘッダー
 const Header = () => {
   return (
     <SidebarHeader>

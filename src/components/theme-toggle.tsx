@@ -4,7 +4,7 @@ import { Switch } from "@/components/ui/switch";
 
 import { useTheme } from "@/components/theme-provider";
 
-export function ModeToggle() {
+export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
