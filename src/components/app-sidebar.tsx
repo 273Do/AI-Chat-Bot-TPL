@@ -18,7 +18,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SB.Rooms />
+              <SB.ModeDefault />
             </SidebarMenu>
             <SidebarSeparator />
           </SidebarGroupContent>

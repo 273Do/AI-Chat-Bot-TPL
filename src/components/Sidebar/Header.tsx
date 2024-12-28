@@ -12,35 +12,38 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
+  SidebarMenuItem,
 } from "@/components/ui/sidebar";
 const Header = () => {
   return (
-    <SidebarMenu>
-      <SidebarHeader>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton>
-              <Bot />
-              サービスタイトル
-              <ChevronsUpDown className="ml-auto" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            side="right"
-            className="w-[--radix-popper-anchor-width]"
-          >
-            <DropdownMenuItem>
-              <SquarePlus />
-              <p>新しいルームを作成</p>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Trash2 />
-              <p>ルームを全削除</p>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarHeader>
-    </SidebarMenu>
+    <SidebarHeader>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <SidebarMenuButton>
+                <Bot />
+                Chatbot
+                <ChevronsUpDown className="ml-auto" />
+              </SidebarMenuButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              side="right"
+              className="w-[--radix-popper-anchor-width]"
+            >
+              <DropdownMenuItem>
+                <SquarePlus />
+                <p>新しいルームを作成</p>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Trash2 />
+                <p>ルームを全削除</p>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarHeader>
   );
 };
 

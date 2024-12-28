@@ -21,8 +21,8 @@ import {
 import { ModeToggle } from "../mode-toggle";
 const Footer = () => {
   return (
-    <SidebarMenu>
-      <SidebarFooter>
+    <SidebarFooter>
+      <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -66,8 +66,8 @@ const Footer = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         </SidebarMenuItem>
-      </SidebarFooter>
-    </SidebarMenu>
+      </SidebarMenu>
+    </SidebarFooter>
   );
 };
 

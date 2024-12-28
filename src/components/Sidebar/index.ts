@@ -1,5 +1,5 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import Rooms from "./Rooms";
+import ModeDefault from "./Mode-default";
 
-export { Header, Footer, Rooms };
+export { Header, Footer, ModeDefault };
