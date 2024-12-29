@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Calendar, MessageSquare, MessageSquareShare } from "lucide-react";
+import { Calendar, MessageSquare, MessageSquareQuote } from "lucide-react";
 
 import {
   SidebarMenuSubButton,
@@ -23,9 +23,8 @@ const Room = ({ name, prompt, mode }: RoomType) => {
             ) : mode === "diary" ? (
               <Calendar size={16} />
             ) : (
-              <MessageSquareShare size={16} />
+              <MessageSquareQuote size={16} />
             )}
-            {/* <HoverEdit /> */}
             <span>{name}</span>
           </a>
         </SidebarMenuSubButton>

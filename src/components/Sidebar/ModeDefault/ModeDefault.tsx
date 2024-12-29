@@ -77,7 +77,7 @@ const ModeDefault = () => {
                         <TooltipTrigger>
                           <Room {...room} />
                         </TooltipTrigger>
-                        <TooltipContent className="z-50 w-auto p-3 text-xs">
+                        <TooltipContent className="z-50 w-60 p-3 text-xs">
                           <p>{room.prompt}</p>
                         </TooltipContent>
                       </Tooltip>
