@@ -131,3 +131,7 @@
   background: hsl(var(--card-foreground));
   border-radius: 20px;
 }
+
+.rdp-vhidden {
+  @apply hidden;
+}

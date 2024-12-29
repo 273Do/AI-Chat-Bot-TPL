@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Hash } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 import {
   Collapsible,
@@ -64,7 +64,7 @@ const ModeDefault = () => {
               </HoverCard> */}
               {/* MEMO: sidebarが開いているとき */}
               <SidebarMenuButton className="text-xs text-muted-foreground">
-                <Hash size={16} />
+                <ChevronRight className="transition-transform group-data-[state=open]/collapsible:rotate-90" />
                 {date}
               </SidebarMenuButton>
             </CollapsibleTrigger>

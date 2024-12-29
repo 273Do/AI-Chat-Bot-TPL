@@ -1,5 +1,6 @@
 import Footer from "./Footer";
 import Header from "./Header";
-import ModeDefault from "./ModeDefault/Mode-default";
+import ModeDefault from "./ModeDefault/ModeDefault";
+import ModeDiary from "./ModeDiary/ModeDiary";
 
-export { Header, Footer, ModeDefault };
+export { Header, Footer, ModeDefault, ModeDiary };

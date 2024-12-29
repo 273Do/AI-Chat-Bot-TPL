@@ -30,7 +30,8 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SB.ModeDefault />
+              {/* <SB.ModeDefault /> */}
+              <SB.ModeDiary />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
