@@ -1,16 +1,17 @@
 import "./App.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
-import { AppSidebar } from "@/components/app-sidebar";
+import ChatScreen from "./components/Chat/ChatScreen";
+
+import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 
 function App() {
   return (
     <>
       <SidebarProvider defaultOpen>
         <AppSidebar />
-        <main>
-          <SidebarTrigger />
-          {/* <h1>Hello, world!</h1> */}
+        <main className="w-full">
+          <ChatScreen />
         </main>
       </SidebarProvider>
     </>

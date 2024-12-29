@@ -7,7 +7,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
-import HoverEdit from "../HoverEdit";
+import HoverEdit from "./HoverEdit";
 
 import { RoomType } from "@/components/demo-data-types";
 

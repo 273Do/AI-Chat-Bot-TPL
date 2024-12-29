@@ -7,9 +7,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import * as SB from "@/components/Sidebar/index";
+import * as SB from "./index";
 
-// サイドバーのコンポーネント
+// サイドバー全体のコンポーネント
 export function AppSidebar() {
   const {
     state,
@@ -31,7 +31,7 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SB.ModeDefault />
-              {/* <SB.ModeDiary /> */}
+              <SB.ModeDiary />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

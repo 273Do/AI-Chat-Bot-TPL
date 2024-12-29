@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "../../theme-toggle";
 
 // サイドバーのフッター
 const Footer = () => {
