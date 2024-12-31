@@ -10,6 +10,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        gpt: "var(--gpt)",
+        gemini: "var(--gemini)",
+        claude: "var(--claude)",
+        gptsecondary: "var(--gpt-secondary)",
+        geminisecondary: "var(--gemini-secondary)",
+        claudesecondary: "var(--claude-secondary)",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

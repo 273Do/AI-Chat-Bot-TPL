@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
+import { ArrowUp } from "lucide-react";
+
+import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
-const inputArea = () => {
+const InputArea = () => {
+  const [input, setInput] = useState<string>("");
+
   return (
-    <div className="w-[400px]">
-      <Textarea
-        // placeholder="Tell us a little bit about yourself"
-        className="resize-none"
-        // {...field}
-      />
+    <div className="mb-7 flex size-full items-end justify-center  text-center text-xl">
+      <div className="flex w-[400px] items-end">
+        <Textarea
+          // placeholder="Tell us a little bit about yourself"
+          className="resize-none"
+          // {...field}
+
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <Button className="ml-2 p-3" disabled={!input.match(/\S/g)}>
+          <ArrowUp size={16} strokeWidth={3} />
+        </Button>
+      </div>
     </div>
   );
 };
 
-export default inputArea;
+export default InputArea;
