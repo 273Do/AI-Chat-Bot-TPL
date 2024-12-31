@@ -12,7 +12,7 @@ const ChatScreen = () => {
         <div className="flex w-[800px] max-w-6xl flex-col items-center">
           <div className="h-16"></div>
           <div className="flex w-full flex-col justify-center">
-            <div className="size-full bg-slate-400">
+            <div className="bga-slate-400 size-full">
               <Chat />
             </div>
           </div>

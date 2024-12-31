@@ -9,7 +9,7 @@ import {
 
 import HoverEdit from "./HoverEdit";
 
-import { RoomType } from "@/components/demo-data-types";
+import { RoomType } from "@/components/demo-rooms-types";
 
 // defaultモード時のルーム表示コンポーネント
 const Room = ({ name, prompt, mode }: RoomType) => {

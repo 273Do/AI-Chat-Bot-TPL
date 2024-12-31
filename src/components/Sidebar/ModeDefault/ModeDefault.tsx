@@ -19,8 +19,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { RoomType } from "../../demo-data-types";
-import roomsData from "../../demo-data.json";
+import { RoomType } from "../../demo-rooms-types";
+import roomsData from "../../demo-rooms.json";
 import Room from "../Room";
 
 // defaultモード時のサイドバー表示
