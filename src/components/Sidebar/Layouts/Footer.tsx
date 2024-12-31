@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ChevronsUpDown, LogOut, Settings, User2 } from "lucide-react";
+import { ChevronsUpDown, LogOut, User2 } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/sidebar";
 
 import { ThemeToggle } from "../../theme-toggle";
+
+import SettingScreen from "@/components/Setting/SettingScreen";
 
 // サイドバーのフッター
 const Footer = () => {
@@ -51,16 +53,12 @@ const Footer = () => {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <Settings />
-                  設定
-                </DropdownMenuItem>
+                <SettingScreen />
                 <DropdownMenuLabel className="relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
                   <ThemeToggle />
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-
               <DropdownMenuItem>
                 <LogOut />
                 ログアウト
