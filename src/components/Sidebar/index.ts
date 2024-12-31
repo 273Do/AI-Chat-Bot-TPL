@@ -1,5 +1,5 @@
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./Layouts/Footer";
+import Header from "./Layouts/Header";
 import ModeDefault from "./ModeDefault/ModeDefault";
 import ModeDiary from "./ModeDiary/ModeDiary";
 

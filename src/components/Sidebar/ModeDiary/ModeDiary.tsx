@@ -9,6 +9,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
+// ダイアリーモード時のサイドバー表示
 const ModeDiary = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   useEffect(() => {
