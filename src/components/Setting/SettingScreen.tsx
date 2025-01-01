@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 
 import LLMSelect from "./LLMs/LLMSelect";
-import RoomSettingSelect from "./RoomSettingSelect";
+import RoomSettingSelect from "./RoomSetting/RoomSettingSelect";
 
 const SettingScreen = () => {
   return (
