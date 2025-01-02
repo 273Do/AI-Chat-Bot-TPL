@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sidebar";
 
 // ダイアリーモード時のサイドバー表示
-const ModeDiary = () => {
+const ModeDiary = ({ isOpen }: { isOpen: boolean }) => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   useEffect(() => {
     if (!date) return;

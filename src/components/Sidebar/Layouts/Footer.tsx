@@ -59,7 +59,7 @@ const Footer = () => {
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
                 <LogOut />
                 ログアウト
               </DropdownMenuItem>
