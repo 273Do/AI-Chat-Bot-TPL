@@ -24,7 +24,7 @@ export function AppSidebar() {
     // toggleSidebar,
   } = useSidebar();
 
-  const RoomMode = useAppSelector((state: RootState) => state.RoomMode.mode);
+  const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
 
   return (
     <Sidebar collapsible="icon">
@@ -33,7 +33,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {RoomMode === 2 ? (
+              {roomMode === 2 ? (
                 <SB.ModeDiary isOpen={open} />
               ) : (
                 <SB.ModeDefault isOpen={open} />

@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface RoomModeState {
+interface InitialRoomModeState {
   mode: number;
 }
 
-const initialState: RoomModeState = {
+const initialState: InitialRoomModeState = {
   mode: 0,
 };
 
 export const RoomModeSlice = createSlice({
-  name: "RoomMode",
+  name: "roomMode",
   initialState,
   reducers: {
     setRoomMode: (state, action: PayloadAction<number>) => {

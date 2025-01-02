@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface LLMSettingState {
+interface InitialLLMSettingState {
   llm_id: number;
 }
 
-const initialState: LLMSettingState = {
+const initialState: InitialLLMSettingState = {
   llm_id: 0,
 };
 
