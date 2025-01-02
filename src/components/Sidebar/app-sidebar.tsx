@@ -9,19 +9,22 @@ import {
 
 import * as SB from "./index";
 
+import { useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
+
 // サイドバー全体のコンポーネント
 export function AppSidebar() {
   const {
-    state,
+    // state,
     open,
-    setOpen,
-    openMobile,
-    setOpenMobile,
-    isMobile,
-    toggleSidebar,
+    // setOpen,
+    // openMobile,
+    // setOpenMobile,
+    // isMobile,
+    // toggleSidebar,
   } = useSidebar();
 
-  console.log(open);
+  const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
 
   return (
     <Sidebar collapsible="icon">
@@ -30,8 +33,11 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SB.ModeDefault />
-              <SB.ModeDiary />
+              {roomMode === 2 ? (
+                <SB.ModeDiary isOpen={open} />
+              ) : (
+                <SB.ModeDefault isOpen={open} />
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

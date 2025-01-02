@@ -2,7 +2,7 @@ import React from "react";
 
 import { SettingItemType } from "../LLMs/type";
 
-const SettingItem = (mode: SettingItemType) => {
+const ModeSelectItem = (mode: SettingItemType) => {
   return (
     <div
       onClick={() => mode.handleSelect(mode.id)}
@@ -21,4 +21,4 @@ const SettingItem = (mode: SettingItemType) => {
   );
 };
 
-export default SettingItem;
+export default ModeSelectItem;

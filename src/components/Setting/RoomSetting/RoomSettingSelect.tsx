@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Calendar, MessageSquare, MessageSquareQuote } from "lucide-react";
 
-import SettingItem from "./SettingItem";
+import ModeSelectItem from "./SettingItem";
+
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
+import { setRoomMode } from "@/features/RoomModeSlice";
 
 const modes = [
   {
@@ -27,16 +31,17 @@ const modes = [
 ];
 
 const RoomSettingSelect = () => {
-  const [selectMode, setSelectMode] = useState<number>(0);
+  const RoomMode = useAppSelector((state: RootState) => state.RoomMode.mode);
+  const dispatch = useAppDispatch();
 
   return (
     <>
       <p className="text-md mt-4 font-bold">ルームモードの設定</p>
       <div className="grid-row-3 my-2 grid h-52 gap-3">
         {modes.map((mode) => (
-          <SettingItem
-            selectMode={selectMode}
-            handleSelect={() => setSelectMode(mode.id)}
+          <ModeSelectItem
+            selectMode={RoomMode}
+            handleSelect={() => dispatch(setRoomMode(mode.id))}
             {...mode}
             key={mode.id}
           />

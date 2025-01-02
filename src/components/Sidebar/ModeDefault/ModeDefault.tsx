@@ -1,12 +1,22 @@
 import React from "react";
 
-import { ChevronRight } from "lucide-react";
+import {
+  Calendar,
+  ChevronRight,
+  MessageSquare,
+  MessageSquareQuote,
+} from "lucide-react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import {
   SidebarMenuButton,
   SidebarMenuItem,
@@ -24,7 +34,7 @@ import roomsData from "../../demo-rooms.json";
 import Room from "../Room";
 
 // defaultモード時のサイドバー表示
-const ModeDefault = () => {
+const ModeDefault = ({ isOpen }: { isOpen: boolean }) => {
   // const roomsData: RoomType[] = roomsData;
 
   const groupedByDate = roomsData
@@ -45,28 +55,33 @@ const ModeDefault = () => {
         <Collapsible defaultOpen className="group/collapsible">
           <SidebarMenuItem key={date}>
             <CollapsibleTrigger asChild>
-              {/* MEMO: sidebarが閉じているときのみ */}
-              {/* <HoverCard>
-                <HoverCardTrigger>
-                  <SidebarMenuButton className="text-xs text-muted-foreground">
-                    <MessageSquare size={16} />
-                    {date}
-                  </SidebarMenuButton>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-auto p-3 text-xs">
-                  <p className="mb-2 text-muted-foreground">{date}</p>
-                  <div>
-                    {groupedByDate[date].map((room: RoomType) => (
-                      <div key={room.id}>{room.name}</div>
-                    ))}
-                  </div>
-                </HoverCardContent>
-              </HoverCard> */}
-              {/* MEMO: sidebarが開いているとき */}
-              <SidebarMenuButton className="text-xs text-muted-foreground">
-                <ChevronRight className="transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                {date}
-              </SidebarMenuButton>
+              {isOpen === false ? (
+                // MEMO: sidebarが閉じているときのみ
+                <HoverCard>
+                  <HoverCardTrigger>
+                    <SidebarMenuButton className="text-xs text-muted-foreground">
+                      {groupedByDate[date][0].mode === "default" ? (
+                        <MessageSquare size={16} />
+                      ) : groupedByDate[date][0].mode === "diary" ? (
+                        <Calendar size={16} />
+                      ) : (
+                        <MessageSquareQuote size={16} />
+                      )}
+                      {date}
+                    </SidebarMenuButton>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-full p-2 text-xs">
+                    <p className="text-muted-foreground">{date}</p>
+                    <p>Room:{groupedByDate[date].length}</p>
+                  </HoverCardContent>
+                </HoverCard>
+              ) : (
+                // MEMO: sidebarが開いているとき
+                <SidebarMenuButton className="text-xs text-muted-foreground">
+                  <ChevronRight className="transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                  {date}
+                </SidebarMenuButton>
+              )}
             </CollapsibleTrigger>
             <CollapsibleContent>
               <SidebarMenuSub>

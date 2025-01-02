@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import LLMItem from "./LLMItem";
+
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
+import { setLLMSetting } from "@/features/LLMSettingSlice";
 
 const LLMs = [
   {
@@ -57,7 +61,10 @@ const LLMs = [
 ];
 
 const LLMSelect = () => {
-  const [selectLLM, setselectLLM] = useState<number>(0);
+  const LLMSetting = useAppSelector(
+    (state: RootState) => state.LLMSetting.llm_id
+  );
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -65,8 +72,8 @@ const LLMSelect = () => {
       <div className="my-2 grid h-24 grid-cols-3 gap-3">
         {LLMs.map((llm) => (
           <LLMItem
-            selectLLM={selectLLM}
-            handleSelect={() => setselectLLM(llm.id)}
+            selectLLM={LLMSetting}
+            handleSelect={() => dispatch(setLLMSetting(llm.id))}
             {...llm}
             key={llm.id}
           />
