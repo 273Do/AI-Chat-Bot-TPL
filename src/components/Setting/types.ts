@@ -6,8 +6,8 @@ interface LLMItemType {
   logo: ReactNode;
   bg: string;
   border: string;
-  selectedLLM: string;
-  handleSelect: (name: string) => void;
+  selectLLM: number;
+  handleSelect: (id: number) => void;
 }
 
 export type { LLMItemType };

@@ -57,7 +57,7 @@ const LLMs = [
 ];
 
 const LLMSelect = () => {
-  const [selectedLLM, setSelectedLLM] = useState<string>("GPT-4o");
+  const [selectLLM, setselectLLM] = useState<number>(0);
 
   return (
     <>
@@ -65,8 +65,8 @@ const LLMSelect = () => {
       <div className="my-2 grid h-24 grid-cols-3 gap-3">
         {LLMs.map((llm) => (
           <LLMItem
-            selectedLLM={selectedLLM}
-            handleSelect={() => setSelectedLLM(llm.name)}
+            selectLLM={selectLLM}
+            handleSelect={() => setselectLLM(llm.id)}
             {...llm}
             key={llm.id}
           />

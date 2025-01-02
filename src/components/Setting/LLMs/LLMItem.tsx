@@ -5,10 +5,10 @@ import { LLMItemType } from "../types";
 const LLMItem = (llm: LLMItemType) => {
   return (
     <div
-      onClick={() => llm.handleSelect(llm.name)}
+      onClick={() => llm.handleSelect(llm.id)}
       className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border 
         ${
-          llm.selectedLLM === llm.name
+          llm.selectLLM === llm.id
             ? `${llm.bg} ${llm.border}`
             : "border-border hover:bg-muted"
         }`}
