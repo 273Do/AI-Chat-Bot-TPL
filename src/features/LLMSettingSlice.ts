@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface LLMSettingState {
-  mode: number;
+interface LLMSettingState {
+  llm_id: number;
 }
 
 const initialState: LLMSettingState = {
-  mode: 0,
+  llm_id: 0,
 };
 
 export const LLMSettingSlice = createSlice({
@@ -14,7 +14,7 @@ export const LLMSettingSlice = createSlice({
   initialState,
   reducers: {
     setLLMSetting: (state, action: PayloadAction<number>) => {
-      state.mode = action.payload;
+      state.llm_id = action.payload;
     },
   },
 });

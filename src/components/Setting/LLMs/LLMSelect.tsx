@@ -62,7 +62,7 @@ const LLMs = [
 
 const LLMSelect = () => {
   const LLMSetting = useAppSelector(
-    (state: RootState) => state.LLMSetting.mode
+    (state: RootState) => state.LLMSetting.llm_id
   );
   const dispatch = useAppDispatch();
 
