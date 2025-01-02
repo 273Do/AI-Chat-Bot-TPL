@@ -1,8 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 
 import LLMItem from "./LLMItem";
 
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { setLLMSetting } from "@/features/LLMSettingSlice";
 
@@ -61,8 +61,10 @@ const LLMs = [
 ];
 
 const LLMSelect = () => {
-  const LLMSetting = useSelector((state: RootState) => state.LLMSetting.mode);
-  const dispatch = useDispatch();
+  const LLMSetting = useAppSelector(
+    (state: RootState) => state.LLMSetting.mode
+  );
+  const dispatch = useAppDispatch();
 
   return (
     <>
