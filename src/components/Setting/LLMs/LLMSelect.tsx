@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import LLMItem from "./LLMItem";
+
+import { RootState } from "@/app/store";
+import { setLLMSetting } from "@/features/LLMSettingSlice";
 
 const LLMs = [
   {
@@ -57,7 +61,8 @@ const LLMs = [
 ];
 
 const LLMSelect = () => {
-  const [selectLLM, setselectLLM] = useState<number>(0);
+  const LLMSetting = useSelector((state: RootState) => state.LLMSetting.mode);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -65,8 +70,8 @@ const LLMSelect = () => {
       <div className="my-2 grid h-24 grid-cols-3 gap-3">
         {LLMs.map((llm) => (
           <LLMItem
-            selectLLM={selectLLM}
-            handleSelect={() => setselectLLM(llm.id)}
+            selectLLM={LLMSetting}
+            handleSelect={() => dispatch(setLLMSetting(llm.id))}
             {...llm}
             key={llm.id}
           />

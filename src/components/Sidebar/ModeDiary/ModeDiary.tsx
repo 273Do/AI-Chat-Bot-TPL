@@ -14,7 +14,9 @@ const ModeDiary = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   useEffect(() => {
     if (!date) return;
-    const dateStr = `${date?.getFullYear()}-${date?.getMonth()}-${date?.getDate()}`;
+    const dateStr = `${date?.getFullYear()}-${
+      date?.getMonth() + 1
+    }-${date?.getDate()}`;
     console.log(dateStr);
   }, [date]);
 
