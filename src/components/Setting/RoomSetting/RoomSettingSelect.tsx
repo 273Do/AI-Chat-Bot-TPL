@@ -31,7 +31,7 @@ const modes = [
 ];
 
 const RoomSettingSelect = () => {
-  const RoomMode = useAppSelector((state: RootState) => state.RoomMode.mode);
+  const RoomMode = useAppSelector((state: RootState) => state.roomMode.mode);
   const dispatch = useAppDispatch();
 
   return (
