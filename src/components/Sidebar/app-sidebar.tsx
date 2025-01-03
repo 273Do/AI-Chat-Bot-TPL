@@ -25,24 +25,31 @@ export function AppSidebar() {
   } = useSidebar();
 
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
+  const user = useAppSelector((state) => state.user.user);
 
   return (
     <Sidebar collapsible="icon">
-      <SB.Header />
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {roomMode === 2 ? (
-                <SB.ModeDiary isOpen={open} />
-              ) : (
-                <SB.ModeDefault isOpen={open} />
-              )}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SB.Footer />
+      {user ? (
+        <>
+          <SB.Header />
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {roomMode === 2 ? (
+                    <SB.ModeDiary isOpen={open} />
+                  ) : (
+                    <SB.ModeDefault isOpen={open} />
+                  )}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+          <SB.Footer />
+        </>
+      ) : (
+        <p>ログインしてください</p>
+      )}
     </Sidebar>
   );
 }
