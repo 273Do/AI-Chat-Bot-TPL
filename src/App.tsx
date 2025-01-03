@@ -3,6 +3,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 
 import { useAppSelector } from "./app/hooks";
 import ChatScreen from "./components/Chat/ChatScreen";
+import Login from "./components/Login/Login";
 
 import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 
@@ -14,9 +15,7 @@ function App() {
     <>
       <SidebarProvider defaultOpen>
         <AppSidebar />
-        <main className="w-full">
-          {user ? <ChatScreen /> : <div>ログインしてください</div>}
-        </main>
+        <main className="w-full">{user ? <ChatScreen /> : <Login />}</main>
       </SidebarProvider>
     </>
   );

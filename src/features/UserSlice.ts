@@ -11,6 +11,12 @@ export interface InitialUserState {
 
 const initialState: InitialUserState = {
   user: null,
+  // user: {
+  //   uid: "123",
+  //   photo: "https://randomuser",
+  //   email: "tet@main.com",
+  //   displayName: "test",
+  // },
 };
 
 export const UserSlice = createSlice({
