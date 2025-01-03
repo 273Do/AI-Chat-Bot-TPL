@@ -5,6 +5,7 @@ import { ArrowUp } from "lucide-react";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
+// チャット入力コンポーネント
 const InputArea = () => {
   const [input, setInput] = useState<string>("");
 

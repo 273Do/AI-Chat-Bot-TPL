@@ -30,6 +30,7 @@ const modes = [
   },
 ];
 
+// ルームモード選択コンポーネント
 const RoomSettingSelect = () => {
   const RoomMode = useAppSelector((state: RootState) => state.roomMode.mode);
   const dispatch = useAppDispatch();

@@ -5,6 +5,7 @@ import ChatScreen from "./components/Chat/ChatScreen";
 
 import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 
+//メインコンポーネント
 function App() {
   return (
     <>

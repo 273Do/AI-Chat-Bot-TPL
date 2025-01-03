@@ -2,6 +2,7 @@ import React from "react";
 
 import { MessageType } from "@/components/demo-messages-type";
 
+// AIのメッセージコンポーネント
 const AIMessage = (msgData: MessageType) => {
   const border_color =
     msgData.AIModel === "GPT"

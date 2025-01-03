@@ -2,6 +2,7 @@ import React from "react";
 
 import { MessageType } from "@/components/demo-messages-type";
 
+// ユーザーのメッセージコンポーネント
 const UserMessage = (msgData: MessageType) => {
   return (
     <div className="flex items-end gap-1">
