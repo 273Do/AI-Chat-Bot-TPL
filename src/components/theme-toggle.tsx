@@ -4,6 +4,7 @@ import { Switch } from "@/components/ui/switch";
 
 import { useTheme } from "@/components/theme-provider";
 
+// テーマトグルコンポーネント
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 

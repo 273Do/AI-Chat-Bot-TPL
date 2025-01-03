@@ -25,7 +25,7 @@ const Header = () => {
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton>
                 <Bot />
-                Chatbot
+                ChatBot
                 <ChevronsUpDown className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>

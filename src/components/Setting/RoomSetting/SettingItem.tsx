@@ -2,6 +2,7 @@ import React from "react";
 
 import { SettingItemType } from "../LLMs/type";
 
+// ルームモード選択アイテムコンポーネント
 const ModeSelectItem = (mode: SettingItemType) => {
   return (
     <div

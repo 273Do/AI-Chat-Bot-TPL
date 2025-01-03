@@ -60,6 +60,7 @@ const LLMs = [
   },
 ];
 
+// LLM選択コンポーネント
 const LLMSelect = () => {
   const LLMSetting = useAppSelector(
     (state: RootState) => state.LLMSetting.llm_id

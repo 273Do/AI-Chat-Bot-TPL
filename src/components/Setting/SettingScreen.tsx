@@ -14,6 +14,7 @@ import {
 import LLMSelect from "./LLMs/LLMSelect";
 import RoomSettingSelect from "./RoomSetting/RoomSettingSelect";
 
+// 設定画面コンポーネント
 const SettingScreen = () => {
   return (
     <Dialog>

@@ -2,6 +2,7 @@ import React from "react";
 
 import { LLMItemType } from "../types";
 
+// LLMアイテムコンポーネント
 const LLMItem = (llm: LLMItemType) => {
   return (
     <div

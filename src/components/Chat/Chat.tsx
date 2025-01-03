@@ -3,6 +3,7 @@ import React from "react";
 import * as MSG from "./index";
 import demoMsgs from "../demos-messages.json";
 
+// チャットコンポーネント
 const Chat = () => {
   const messages = demoMsgs;
 
