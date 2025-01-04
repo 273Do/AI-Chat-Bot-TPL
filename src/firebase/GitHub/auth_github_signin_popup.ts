@@ -4,7 +4,16 @@ import { auth } from "../firebase";
 import { github_provider } from "./auth_github_provider_create";
 
 // GitHubのポップアップを使ったサインイン
-const githubSignInWithPopup = () =>
-  signInWithPopup(auth, github_provider).catch((err) => alert(err.message));
+const githubSignInWithPopup = async () => {
+  try {
+    await signInWithPopup(auth, github_provider);
+  } catch (err) {
+    if (err instanceof Error) {
+      alert(err.message);
+    } else {
+      alert("An unknown error occurred");
+    }
+  }
+};
 
 export { githubSignInWithPopup };

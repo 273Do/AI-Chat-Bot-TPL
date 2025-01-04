@@ -22,25 +22,14 @@ function App() {
 
   // ユーザーのログイン状態を監視
   useEffect(() => {
-    // auth.onAuthStateChanged((loginUser) => {
-    //   console.log(loginUser);
-    //   if (loginUser) {
-    //     dispatch(
-    //       login({
-    //         uid: loginUser.uid,
-    //         photURL: loginUser.photoURL,
-    //         email: loginUser.email,
-    //         displayName: loginUser.displayName,
-    //       })
-    //     );
-    //   } else {
-    //     dispatch(logout());
-    //   }
+    // 以前のonAuthStateChangedの書き方
+    // auth.onAuthStateChanged((loginUser) => {});
 
     // 最新のonAuthStateChangedの書き方
     onAuthStateChanged(auth, (loginUser) => {
       console.log(loginUser);
       if (loginUser) {
+        // ログイン時の処理
         dispatch(
           login({
             uid: loginUser.uid,
@@ -50,6 +39,7 @@ function App() {
           })
         );
       } else {
+        // ログアウト時の処理
         dispatch(logout());
       }
     });
