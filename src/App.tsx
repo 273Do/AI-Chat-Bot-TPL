@@ -1,6 +1,8 @@
 import "./App.css";
 import { useEffect } from "react";
 
+import { onAuthStateChanged } from "firebase/auth";
+
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 import { useAppDispatch, useAppSelector } from "./app/hooks";
@@ -20,7 +22,23 @@ function App() {
 
   // ユーザーのログイン状態を監視
   useEffect(() => {
-    auth.onAuthStateChanged((loginUser) => {
+    // auth.onAuthStateChanged((loginUser) => {
+    //   console.log(loginUser);
+    //   if (loginUser) {
+    //     dispatch(
+    //       login({
+    //         uid: loginUser.uid,
+    //         photURL: loginUser.photoURL,
+    //         email: loginUser.email,
+    //         displayName: loginUser.displayName,
+    //       })
+    //     );
+    //   } else {
+    //     dispatch(logout());
+    //   }
+
+    // 最新のonAuthStateChangedの書き方
+    onAuthStateChanged(auth, (loginUser) => {
       console.log(loginUser);
       if (loginUser) {
         dispatch(

@@ -1,7 +1,8 @@
 import React from "react";
 
-import { ChevronsUpDown, LogOut, User2 } from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,23 +17,38 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 import { ThemeToggle } from "../../theme-toggle";
 
+import { useAppSelector } from "@/app/hooks";
 import SettingScreen from "@/components/Setting/SettingScreen";
 import { auth } from "@/firebase/firebase";
 
 // サイドバーのフッター
 const Footer = () => {
+  const user = useAppSelector((state) => state.user.user);
+  const { open } = useSidebar();
   return (
     <SidebarFooter>
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger asChild className="h-11">
               <SidebarMenuButton>
-                <User2 /> Username
+                <div className="flex items-center justify-start gap-2">
+                  <Avatar className={` ${open ? "size-9" : "-ml-2 size-8"}`}>
+                    <AvatarImage src={user?.photURL} />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col gap-1">
+                    <p>{user?.displayName}</p>
+                    <p className="-mt-1 text-xs font-light text-muted-foreground">
+                      {user?.email}
+                    </p>
+                  </div>
+                </div>
                 <ChevronsUpDown className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
@@ -42,12 +58,15 @@ const Footer = () => {
               // w-[--radix-popper-anchor-width]
             >
               <DropdownMenuLabel>
-                <div className="flex items-center justify-start gap-1">
-                  <User2 className="size-7" />
-                  <div>
-                    <p>User Name</p>
+                <div className="flex items-center justify-start gap-2">
+                  <Avatar>
+                    <AvatarImage src={user?.photURL} />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col gap-1">
+                    <p>{user?.displayName}</p>
                     <p className="-mt-1 text-xs font-light text-muted-foreground">
-                      hogehoge@main.com
+                      {user?.email}
                     </p>
                   </div>
                 </div>
