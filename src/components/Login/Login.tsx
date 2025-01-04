@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { SidebarTrigger } from "../ui/sidebar";
 
+import { githubSignInWithPopup } from "@/firebase/GitHub/auth_github_signin_popup";
 import { googleSignInWithPopup } from "@/firebase/google/auth_google_signin_popup";
 
 // ログイン画面
@@ -10,6 +11,11 @@ const Login = () => {
   // Googleでログイン
   const googleSignIn = async () => {
     await googleSignInWithPopup();
+  };
+
+  //   GitHubでログイン
+  const githubSignIn = async () => {
+    await githubSignInWithPopup();
   };
 
   return (
@@ -34,7 +40,7 @@ const Login = () => {
           </svg>
           <p>Google</p>
         </Button>
-        <Button variant="outline" className="w-72">
+        <Button variant="outline" className="w-72" onClick={githubSignIn}>
           <svg
             className="fill-primary"
             role="img"

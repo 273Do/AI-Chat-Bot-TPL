@@ -1,10 +1,10 @@
 [
   {
-    "uuid": "uuid-2485",
+    "uuid": "uuid-24185",
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photURL": "https://example.com/photURL1.jpg",
+      "photo": "https://example.com/photo1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -12,18 +12,18 @@
     "timestamp": "2024-12-18 06:02:53"
   },
   {
-    "uuid": "uuid-7641",
+    "uuid": "uuid-76241",
     "user": null,
     "AIModel": "Gemini",
     "message": "今日はとても良い天気ですね。散歩に行くのもいいかもしれません。",
     "timestamp": "2024-12-28 16:26:44"
   },
   {
-    "uuid": "uuid-4052",
+    "uuid": "uuid-41052",
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photURL": "https://example.com/photURL2.jpg",
+      "photo": "https://example.com/photo2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -31,18 +31,18 @@
     "timestamp": "2024-12-15 03:05:30"
   },
   {
-    "uuid": "uuid-2811",
+    "uuid": "uuid-28511",
     "user": null,
     "AIModel": "GPT",
     "message": "そういえば、最近興味深い本を読みました。おすすめしましょうか？",
     "timestamp": "2024-12-07 11:42:22"
   },
   {
-    "uuid": "uuid-3663",
+    "uuid": "uuid-36633",
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photURL": "https://example.com/photURL2.jpg",
+      "photo": "https://example.com/photo2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -50,18 +50,18 @@
     "timestamp": "2024-12-16 23:07:11"
   },
   {
-    "uuid": "uuid-6550",
+    "uuid": "uuid-65250",
     "user": null,
     "AIModel": "Claude",
     "message": "タイトルは『未来を創る思考法』です。ビジョンを描く力を学べます。",
     "timestamp": "2024-12-04 01:49:30"
   },
   {
-    "uuid": "uuid-1111",
+    "uuid": "uuid-11111",
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photURL": "https://example.com/photURL1.jpg",
+      "photo": "https://example.com/photo1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -69,18 +69,18 @@
     "timestamp": "2024-12-21 12:58:31"
   },
   {
-    "uuid": "uuid-1441",
+    "uuid": "uuid-14481",
     "user": null,
     "AIModel": "Gemini",
     "message": "ぜひどうぞ。また、感想も聞かせていただけると嬉しいです。",
     "timestamp": "2024-12-23 18:01:29"
   },
   {
-    "uuid": "uuid-7064",
+    "uuid": "uuid-70654",
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photURL": "https://example.com/photURL2.jpg",
+      "photo": "https://example.com/photo2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -88,18 +88,18 @@
     "timestamp": "2024-12-20 08:55:31"
   },
   {
-    "uuid": "uuid-8179",
+    "uuid": "uuid-81379",
     "user": null,
     "AIModel": "GPT",
     "message": "ありがとうございます。それではまた次回の会話を楽しみにしています！ありがとうございます。それではまた次回の会話を楽しみにしています！",
     "timestamp": "2024-12-28 23:45:29"
   },
   {
-    "uuid": "uuid-2485",
+    "uuid": "uuid-24865",
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photURL": "https://example.com/photURL1.jpg",
+      "photo": "https://example.com/photo1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -107,18 +107,18 @@
     "timestamp": "2024-12-18 06:02:53"
   },
   {
-    "uuid": "uuid-7641",
+    "uuid": "uuid-74641",
     "user": null,
     "AIModel": "Gemini",
     "message": "今日はとても良い天気ですね。散歩に行くのもいいかもしれません。",
     "timestamp": "2024-12-28 16:26:44"
   },
   {
-    "uuid": "uuid-4052",
+    "uuid": "uuid-40582",
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photURL": "https://example.com/photURL2.jpg",
+      "photo": "https://example.com/photo2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -126,18 +126,18 @@
     "timestamp": "2024-12-15 03:05:30"
   },
   {
-    "uuid": "uuid-2811",
+    "uuid": "uuid-28111",
     "user": null,
     "AIModel": "GPT",
     "message": "そういえば、最近興味深い本を読みました。おすすめしましょうか？",
     "timestamp": "2024-12-07 11:42:22"
   },
   {
-    "uuid": "uuid-3663",
+    "uuid": "uuid-36613",
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photURL": "https://example.com/photURL2.jpg",
+      "photo": "https://example.com/photo2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -145,18 +145,18 @@
     "timestamp": "2024-12-16 23:07:11"
   },
   {
-    "uuid": "uuid-6550",
+    "uuid": "uuid-65850",
     "user": null,
     "AIModel": "Claude",
     "message": "タイトルは『未来を創る思考法』です。ビジョンを描く力を学べます。",
     "timestamp": "2024-12-04 01:49:30"
   },
   {
-    "uuid": "uuid-1111",
+    "uuid": "uuid-11141",
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photURL": "https://example.com/photURL1.jpg",
+      "photo": "https://example.com/photo1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -164,18 +164,18 @@
     "timestamp": "2024-12-21 12:58:31"
   },
   {
-    "uuid": "uuid-1441",
+    "uuid": "uuid-14471",
     "user": null,
     "AIModel": "Gemini",
     "message": "ぜひどうぞ。また、感想も聞かせていただけると嬉しいです。",
     "timestamp": "2024-12-23 18:01:29"
   },
   {
-    "uuid": "uuid-7064",
+    "uuid": "uuid-70694",
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photURL": "https://example.com/photURL2.jpg",
+      "photo": "https://example.com/photo2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -183,7 +183,7 @@
     "timestamp": "2024-12-20 08:55:31"
   },
   {
-    "uuid": "uuid-8179",
+    "uuid": "uuid-81791",
     "user": null,
     "AIModel": "GPT",
     "message": "ありがとうございます。それではまた次回の会話を楽しみにしています！ありがとうございます。それではまた次回の会話を楽しみにしています！",

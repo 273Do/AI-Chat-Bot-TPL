@@ -52,8 +52,8 @@ const ModeDefault = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <>
       {Object.keys(groupedByDate).map((date) => (
-        <Collapsible defaultOpen className="group/collapsible">
-          <SidebarMenuItem key={date}>
+        <Collapsible defaultOpen className="group/collapsible" key={date}>
+          <SidebarMenuItem>
             <CollapsibleTrigger asChild>
               {isOpen === false ? (
                 // MEMO: sidebarが閉じているときのみ
