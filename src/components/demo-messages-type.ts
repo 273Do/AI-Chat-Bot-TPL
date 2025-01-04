@@ -1,7 +1,7 @@
 interface UserType {
   uid: string;
   displayName: string;
-  photo: string;
+  photURL: string;
   email: string;
 }
 

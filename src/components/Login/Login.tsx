@@ -3,8 +3,15 @@ import React from "react";
 import { Button } from "../ui/button";
 import { SidebarTrigger } from "../ui/sidebar";
 
+import { googleSignInWithPopup } from "@/firebase/google/auth_google_signin_popup";
+
 // ログイン画面
 const Login = () => {
+  // Googleでログイン
+  const googleSignIn = async () => {
+    await googleSignInWithPopup();
+  };
+
   return (
     <>
       <div className="mx-3 flex h-12 items-center">
@@ -15,7 +22,7 @@ const Login = () => {
         <p className=" text-sm text-muted-foreground">
           外部アカウントでログイン
         </p>
-        <Button variant="outline" className="w-72">
+        <Button variant="outline" className="w-72" onClick={googleSignIn}>
           <svg
             className="fill-primary"
             role="img"

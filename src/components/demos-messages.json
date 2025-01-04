@@ -4,7 +4,7 @@
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photo": "https://example.com/photo1.jpg",
+      "photURL": "https://example.com/photURL1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -23,7 +23,7 @@
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photo": "https://example.com/photo2.jpg",
+      "photURL": "https://example.com/photURL2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -42,7 +42,7 @@
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photo": "https://example.com/photo2.jpg",
+      "photURL": "https://example.com/photURL2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -61,7 +61,7 @@
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photo": "https://example.com/photo1.jpg",
+      "photURL": "https://example.com/photURL1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -80,7 +80,7 @@
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photo": "https://example.com/photo2.jpg",
+      "photURL": "https://example.com/photURL2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -99,7 +99,7 @@
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photo": "https://example.com/photo1.jpg",
+      "photURL": "https://example.com/photURL1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -118,7 +118,7 @@
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photo": "https://example.com/photo2.jpg",
+      "photURL": "https://example.com/photURL2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -137,7 +137,7 @@
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photo": "https://example.com/photo2.jpg",
+      "photURL": "https://example.com/photURL2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,
@@ -156,7 +156,7 @@
     "user": {
       "displayName": "John Doe",
       "uid": "12345",
-      "photo": "https://example.com/photo1.jpg",
+      "photURL": "https://example.com/photURL1.jpg",
       "email": "johndoe@example.com"
     },
     "AIModel": null,
@@ -175,7 +175,7 @@
     "user": {
       "displayName": "Jane Smith",
       "uid": "67890",
-      "photo": "https://example.com/photo2.jpg",
+      "photURL": "https://example.com/photURL2.jpg",
       "email": "janesmith@example.com"
     },
     "AIModel": null,

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface InitialUserState {
   user: null | {
     uid: string;
-    photo: string;
+    photURL: string;
     email: string;
     displayName: string;
   };
@@ -13,7 +13,7 @@ const initialState: InitialUserState = {
   user: null,
   // user: {
   //   uid: "123",
-  //   photo: "https://randomuser",
+  //   photURL: "https://randomuser",
   //   email: "tet@main.com",
   //   displayName: "test",
   // },
