@@ -8,6 +8,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import ChatScreen from "./components/Chat/ChatScreen";
 import Login from "./components/Login/Login";
+import { successToast } from "./components/Toast/toast";
 import { login, logout } from "./features/UserSlice";
 import { auth } from "./firebase/firebase";
 
@@ -37,6 +38,10 @@ function App() {
             email: loginUser.email,
             displayName: loginUser.displayName,
           })
+        );
+        successToast(
+          loginUser.providerData[0].providerId.replace(".com", ""),
+          "ログインしました。"
         );
       } else {
         // ログアウト時の処理

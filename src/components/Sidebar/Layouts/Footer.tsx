@@ -24,6 +24,7 @@ import { ThemeToggle } from "../../theme-toggle";
 
 import { useAppSelector } from "@/app/hooks";
 import SettingScreen from "@/components/Setting/SettingScreen";
+import { successToast } from "@/components/Toast/toast";
 import { auth } from "@/firebase/firebase";
 
 // サイドバーのフッター
@@ -81,7 +82,10 @@ const Footer = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="cursor-pointer"
-                onClick={() => auth.signOut()}
+                onClick={() => {
+                  auth.signOut();
+                  successToast("👋 ログアウト", "ログインしました。");
+                }}
               >
                 <LogOut />
                 ログアウト
