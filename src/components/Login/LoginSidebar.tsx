@@ -30,7 +30,7 @@ const LoginSidebar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem className="relative flex cursor-default select-none items-center gap-2 rounded-sm  text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
-            <SidebarMenuButton>
+            <SidebarMenuButton className="h-11">
               <ThemeToggle />
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -27,15 +27,17 @@ const ModeDiary = ({ isOpen }: { isOpen: boolean }) => {
         Calendar
       </SidebarGroupLabel>
       <SidebarMenuItem>
-        <Calendar
-          mode="single"
-          captionLayout="dropdown-buttons"
-          className="bg-card-muted mb-2 rounded-lg border"
-          selected={date}
-          onSelect={setDate}
-          fromYear={1960}
-          toYear={2030}
-        />
+        {isOpen && (
+          <Calendar
+            mode="single"
+            captionLayout="dropdown-buttons"
+            className="bg-card-muted mb-2 rounded-lg border"
+            selected={date}
+            onSelect={setDate}
+            fromYear={1960}
+            toYear={2030}
+          />
+        )}
       </SidebarMenuItem>
       <SidebarMenuButton onClick={() => setDate(new Date())}>
         <House size={16} />
