@@ -1,5 +1,6 @@
 import React from "react";
 
+import { signOut } from "firebase/auth";
 import { ChevronsUpDown, LogOut } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -83,7 +84,7 @@ const Footer = () => {
               <DropdownMenuItem
                 className="cursor-pointer"
                 onClick={() => {
-                  auth.signOut();
+                  signOut(auth);
                   successToast("👋 ログアウト", "ログインしました。");
                 }}
               >
