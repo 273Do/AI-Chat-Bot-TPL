@@ -12,6 +12,7 @@ import * as SB from "./index";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
+import useRoomCollection from "@/hooks/useRoomCollection";
 
 // ログイン後のサイドバー全体のコンポーネント
 const MainSidebar = () => {
@@ -27,19 +28,29 @@ const MainSidebar = () => {
 
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
 
+  const userDocId = useAppSelector(
+    (state: RootState) => state.user.user?.userDocId
+  );
+
+  // ユーザのルーム情報を取得
+  const { roomDocuments } = useRoomCollection(userDocId ?? "");
+  console.log(roomDocuments);
+
   return (
     <>
       <SB.Header />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {roomMode === 2 ? (
-                <SB.ModeDiary isOpen={open} />
-              ) : (
-                <SB.ModeDefault isOpen={open} />
-              )}
-            </SidebarMenu>
+            {roomDocuments && (
+              <SidebarMenu>
+                {roomMode === 2 ? (
+                  <SB.ModeDiary isOpen={open} />
+                ) : (
+                  <SB.ModeDefault isOpen={open} />
+                )}
+              </SidebarMenu>
+            )}
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

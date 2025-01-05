@@ -3,6 +3,7 @@ interface UserType {
   displayName: string;
   photURL: string;
   email: string;
+  userDocId: string;
 }
 
 interface MessageType {
