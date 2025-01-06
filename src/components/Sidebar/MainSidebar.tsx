@@ -33,21 +33,21 @@ const MainSidebar = () => {
   );
 
   // ユーザのルーム情報を取得
-  const { roomDocuments } = useRoomCollection(userDocId ?? "");
-  console.log(roomDocuments);
-
+  const { roomDocuments: rooms } = useRoomCollection(userDocId ?? "");
+  console.log(rooms);
+  // TODO: 取得したルームを表示するようにする
   return (
     <>
       <SB.Header />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            {roomDocuments && (
+            {rooms && (
               <SidebarMenu>
                 {roomMode === 2 ? (
                   <SB.ModeDiary isOpen={open} />
                 ) : (
-                  <SB.ModeDefault isOpen={open} />
+                  <SB.ModeDefault isOpen={open} rooms={rooms} />
                 )}
               </SidebarMenu>
             )}

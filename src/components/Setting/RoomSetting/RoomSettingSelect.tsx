@@ -24,7 +24,7 @@ const modes = [
   },
   {
     id: 2,
-    title: "カレンダー",
+    title: "ダイアリー",
     description: "1日にひとつずつチャットルームが作成されるようになります。",
     icon: <Calendar />,
   },

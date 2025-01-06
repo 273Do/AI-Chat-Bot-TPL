@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 
 import { collection, onSnapshot } from "firebase/firestore";
 
-import { RoomType } from "@/components/Sidebar/type";
+import { RoomsType } from "@/components/Sidebar/type";
 import { db } from "@/firebase/firebase";
 
 // ユーザのルーム情報を取得するカスタムフック
 const useRoomCollection = (userDocId: string) => {
-  const [roomDocuments, setRoomDocuments] = useState<RoomType[]>([]);
+  const [roomDocuments, setRoomDocuments] = useState<RoomsType[]>([]);
 
   const roomRef = collection(db, "users", userDocId, "rooms");
 
@@ -15,15 +15,16 @@ const useRoomCollection = (userDocId: string) => {
   useEffect(() => {
     console.log("fetching rooms");
     onSnapshot(roomRef, (roomSnapshot) => {
-      const roomsResult: RoomType[] = [];
+      const roomsResult: RoomsType[] = [];
       roomSnapshot.docs.forEach((doc) => {
-        const data = doc.data();
+        // const data = doc.data();
         roomsResult.push({
-          id: data.id,
-          roomName: data.roomName,
-          prompt: data.prompt,
-          mode: data.mode,
-          createdAt: data.createdAt,
+          id: doc.id, // ドキュメントのID
+          room: doc.data(),
+          //   roomName: data.roomName,
+          //   prompt: data.prompt,
+          //   mode: data.mode,
+          //   createdAt: data.createdAt,
         });
         setRoomDocuments(roomsResult);
       });

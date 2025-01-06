@@ -8,24 +8,23 @@ import {
 } from "@/components/ui/sidebar";
 
 import HoverEdit from "./HoverEdit";
-
-import { RoomType } from "@/components/demo-rooms-types";
+import { RoomsType } from "./type";
 
 // defaultモード時のルーム表示コンポーネント
-const Room = ({ name, prompt, mode }: RoomType) => {
+const Room = ({ room }: RoomsType) => {
   return (
     <>
-      <SidebarMenuSubItem className="cursor-pointer">
-        <SidebarMenuSubButton asChild>
+      <SidebarMenuSubItem className="flex w-full cursor-pointer items-center justify-between">
+        <SidebarMenuSubButton className="w-full" asChild>
           <a>
-            {mode === "default" ? (
+            {room.mode === "default" ? (
               <MessageSquare size={16} />
-            ) : mode === "diary" ? (
+            ) : room.mode === "diary" ? (
               <Calendar size={16} />
             ) : (
               <MessageSquareQuote size={16} />
             )}
-            <span>{name}</span>
+            <span>{room.roomName}</span>
           </a>
         </SidebarMenuSubButton>
         <HoverEdit />

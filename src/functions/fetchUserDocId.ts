@@ -1,11 +1,22 @@
-import { collection, query, where, getDocs } from "firebase/firestore";
+/* eslint-disable import/named */
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  DocumentData,
+  Query,
+} from "firebase/firestore";
 
 import { db } from "@/firebase/firebase";
 
 // ログイン中のユーザのドキュメントIDを取得する関数
 const fetchUserDocId = async (uid: string): Promise<string> => {
   // usersコレクションからuserIdが一致するドキュメントを取得するクエリ
-  const usersQuery = query(collection(db, "users"), where("userId", "==", uid));
+  const usersQuery: Query<DocumentData> = query(
+    collection(db, "users"),
+    where("userId", "==", uid)
+  );
 
   // ユーザのドキュメントIDを保存する変数
   let userDocId: string = "";

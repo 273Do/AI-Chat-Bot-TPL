@@ -1,9 +1,13 @@
-interface RoomType {
+/* eslint-disable import/named */
+import { DocumentData } from "firebase/firestore";
+
+interface RoomsType {
   id: string;
-  roomName: string;
-  prompt: string | null;
-  mode: "default" | "diary" | "prompt";
-  createdAt: Date;
+  room: DocumentData;
+  // roomName: string;
+  // prompt: string | null;
+  // mode: "default" | "diary" | "prompt";
+  // createdAt: Date;
 }
 
-export type { RoomType };
+export type { RoomsType };
