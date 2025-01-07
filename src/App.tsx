@@ -29,6 +29,7 @@ function App() {
 
     // 最新のonAuthStateChangedの書き方
     onAuthStateChanged(auth, async (loginUser) => {
+      console.log(loginUser);
       if (loginUser) {
         try {
           // 非同期でログインしているユーザのドキュメントIDを取得

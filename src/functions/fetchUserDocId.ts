@@ -6,6 +6,7 @@ import {
   getDocs,
   DocumentData,
   Query,
+  addDoc,
 } from "firebase/firestore";
 
 import { db } from "@/firebase/firebase";
@@ -31,9 +32,14 @@ const fetchUserDocId = async (uid: string): Promise<string> => {
       const userDoc = usersSnapshot.docs[0];
       userDocId = userDoc.id;
     } else {
-      // TODO: ユーザが存在しない場合は，ユーザを作成する処理を記述する．
+      // ユーザが存在しない場合はユーザを作成する処理を記述する
       console.log("データなし");
-      userDocId = "";
+      console.log("ユーザを作成する");
+      // dbにユーザを作成する
+      const createUserDoc = await addDoc(collection(db, "users"), {
+        userId: uid,
+      });
+      userDocId = createUserDoc.id;
     }
   } catch (error) {
     console.error("Error fetching user document:", error);
