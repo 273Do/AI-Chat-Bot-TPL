@@ -23,11 +23,13 @@ function App() {
   const dispatch = useAppDispatch();
 
   // ユーザーのログイン状態を監視
+  // レンダリング時に一度だけ実行
   useEffect(() => {
     // 以前のonAuthStateChangedの書き方
     // auth.onAuthStateChanged((loginUser) => {});
 
     // 最新のonAuthStateChangedの書き方
+    // ログイン状態が変わるたびにコールバック(中の処理)が呼び出される
     onAuthStateChanged(auth, async (loginUser) => {
       console.log(loginUser);
       if (loginUser) {

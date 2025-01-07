@@ -86,7 +86,7 @@ const ModeDefault = ({
             <CollapsibleContent>
               <SidebarMenuSub>
                 {groupedByDate[date].map((room: RoomsType) =>
-                  room.room.mode == "prompt" ? (
+                  room.room.mode == 1 ? (
                     <TooltipProvider key={room.id}>
                       <Tooltip>
                         <TooltipTrigger>

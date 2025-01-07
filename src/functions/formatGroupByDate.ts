@@ -2,8 +2,14 @@ import { RoomsType } from "@/components/Sidebar/type";
 
 // Firebase Timestampを日付に変換するヘルパー関数
 const formatDate = (timestamp: { seconds: number }): string => {
-  const date = new Date(timestamp.seconds * 1000); // 秒をミリ秒に変換
-  return date.toISOString().split("T")[0]; // YYYY-MM-DD形式
+  // UTC時間からDateオブジェクトを作成
+  const date = new Date(timestamp.seconds * 1000);
+
+  // 日本時間に変換（UTC+9）
+  const jstDate = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+
+  // YYYY-MM-DD形式で返す
+  return jstDate.toISOString().split("T")[0];
 };
 
 // データを日付ごとにグループ化し、新しい順に並べる

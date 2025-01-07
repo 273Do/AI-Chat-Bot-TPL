@@ -20,7 +20,7 @@ const Room = ({ id, room }: RoomsType) => {
 
   return (
     <>
-      <SidebarMenuSubItem className="flex w-full cursor-pointer items-center justify-between">
+      <SidebarMenuSubItem className="flex h-7 w-full cursor-pointer items-center justify-between">
         <SidebarMenuSubButton
           className={`w-full ${id === room_id ? "bg-primary/20" : ""}`}
           asChild
@@ -35,9 +35,9 @@ const Room = ({ id, room }: RoomsType) => {
           }
         >
           <a>
-            {room.mode === "default" ? (
+            {room.mode === 0 ? (
               <MessageSquare size={16} />
-            ) : room.mode === "diary" ? (
+            ) : room.mode === 2 ? (
               <Calendar size={16} />
             ) : (
               <MessageSquareQuote size={16} />

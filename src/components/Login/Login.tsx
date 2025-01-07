@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { SidebarTrigger } from "../ui/sidebar";
 
 import { githubSignInWithPopup } from "@/firebase/GitHub/auth_github_signin_popup";
-import { googleSignInWithPopup } from "@/firebase/google/auth_google_signin_popup";
+import { googleSignInWithPopup } from "@/firebase/Google/auth_google_signin_popup";
 
 // ログイン画面
 const Login = () => {

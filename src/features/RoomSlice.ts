@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 interface InitialRoomState {
   room_id: string | null;
   room_name: string | null;
-  room_mode: string | null;
+  room_mode: number | null;
 }
 
 const initialState: InitialRoomState = {
