@@ -11,6 +11,7 @@ import {
 
 // ダイアリーモード時のサイドバー表示
 const ModeDiary = ({ isOpen }: { isOpen: boolean }) => {
+  // カレンダーで選択した日付を取得
   const [date, setDate] = useState<Date | undefined>(new Date());
   useEffect(() => {
     if (!date) return;
@@ -19,6 +20,10 @@ const ModeDiary = ({ isOpen }: { isOpen: boolean }) => {
     }-${date?.getDate()}`;
     console.log(dateStr);
   }, [date]);
+
+  // TODO: 今日の日付の部屋が存在しない場合は作成する
+  // TODO: CreateRoomComponentの部屋作成関数と共通化する
+  const createTodayRoom = () => {};
 
   return (
     <SidebarMenuItem>

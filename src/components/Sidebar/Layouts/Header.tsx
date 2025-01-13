@@ -17,7 +17,7 @@ import {
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
-import CreateRoom from "@/components/Sidebar/Layouts/CreateRoom";
+import CreateRoomComponent from "@/components/Sidebar/Layouts/CreateRoomComponent";
 
 // サイドバーのヘッダー
 const Header = () => {
@@ -43,7 +43,7 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent side="right" className="w-44">
                 <DropdownMenuItem asChild>
-                  <CreateRoom />
+                  <CreateRoomComponent />
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Trash2 />

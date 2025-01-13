@@ -20,7 +20,7 @@ import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { db } from "@/firebase/firebase";
 
-const CreateRoom = () => {
+const CreateRoomComponent = () => {
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
   const userDocId = useAppSelector(
     (state: RootState) => state.user.user?.userDocId
@@ -85,4 +85,4 @@ const CreateRoom = () => {
   );
 };
 
-export default CreateRoom;
+export default CreateRoomComponent;
