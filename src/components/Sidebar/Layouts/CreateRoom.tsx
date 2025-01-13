@@ -35,9 +35,6 @@ const CreateRoom = () => {
       return;
     }
 
-    console.log(titleInput);
-    console.log(promptRef.current?.value);
-
     await addDoc(collection(db, "users", userDocId, "rooms"), {
       roomName: titleInput,
       prompt: promptRef.current ? promptRef.current.value : "",

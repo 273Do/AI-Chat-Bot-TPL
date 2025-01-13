@@ -43,8 +43,7 @@ const ModeDefault = ({
   isOpen: boolean;
   rooms: RoomsType[];
 }) => {
-  // TODO: roomから日付ごとにグループ化し，時間の新しいものを上に表示する
-
+  //  roomから日付ごとにグループ化し，時間の新しいものを上に表示する
   const groupedByDate = groupByDate(rooms);
 
   console.log(groupedByDate);
@@ -60,9 +59,9 @@ const ModeDefault = ({
                 <HoverCard>
                   <HoverCardTrigger>
                     <SidebarMenuButton className="text-xs text-muted-foreground">
-                      {groupedByDate[date][0].room.mode === "default" ? (
+                      {groupedByDate[date][0].room.mode === 0 ? (
                         <MessageSquare size={16} />
-                      ) : groupedByDate[date][0].room.mode === "diary" ? (
+                      ) : groupedByDate[date][0].room.mode === 2 ? (
                         <Calendar size={16} />
                       ) : (
                         <MessageSquareQuote size={16} />
