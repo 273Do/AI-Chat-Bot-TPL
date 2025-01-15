@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "./app/hooks";
 import ChatScreen from "./components/Chat/ChatScreen";
 import Login from "./components/Login/Login";
 import { errorToast, successToast } from "./components/Toast/toast";
+import { resetRoomInfo } from "./features/RoomSlice";
 import { login, logout } from "./features/UserSlice";
 import { auth } from "./firebase/firebase";
 
@@ -56,11 +57,13 @@ function App() {
         } catch (err) {
           // ユーザーのドキュメントID取得時のエラー処理
           dispatch(logout());
+          dispatch(resetRoomInfo());
           errorToast("ログインエラー", (err as Error).message);
         }
       } else {
         // ログアウト時
         dispatch(logout());
+        dispatch(resetRoomInfo());
       }
     });
   }, [dispatch]);

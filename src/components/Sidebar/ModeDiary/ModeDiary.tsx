@@ -24,7 +24,9 @@ const ModeDiary = ({
   rooms: RoomsType[];
 }) => {
   // カレンダーで選択した日付を取得
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    new Date()
+  );
 
   const dispatch = useAppDispatch();
   const { createRoom } = useCreateRoom();
@@ -32,7 +34,7 @@ const ModeDiary = ({
   useEffect(() => {
     // 今日ルームを作成 / 選択した日のルームの移動
     createTodayRoomAndModeRoom();
-  }, [date]);
+  }, [selectedDate]);
 
   // MEMO: 今日の日付のルームが存在しない場合は作成する
   const createTodayRoomAndModeRoom = async () => {
@@ -40,26 +42,27 @@ const ModeDiary = ({
     const existRoom = rooms.find(
       (item) =>
         new Date(item.room.createdAt.toDate()).toDateString() ===
-        date?.toDateString()
+        selectedDate?.toDateString()
     );
 
     // MEMO: 選択した日付のルームがない場合は対応したルームを作成する
     if (!existRoom) {
-      if (date === undefined) return;
+      // 選択した日付が
+      if (selectedDate === undefined) return;
 
       // ルーム名を日付にする
-      const roomName = `${date?.getFullYear()}-${
-        (date?.getMonth() ?? 0) + 1
-      }-${date?.getDate()}`;
+      const roomName = `${selectedDate?.getFullYear()}-${
+        (selectedDate?.getMonth() ?? 0) + 1
+      }-${selectedDate?.getDate()}`;
 
       // ルームを作成しstateに保存
       await createRoom(
         roomName,
         "",
         new Date(
-          date?.getFullYear() ?? 0,
-          date?.getMonth() ?? 0,
-          date?.getDate() ?? 0
+          selectedDate?.getFullYear() ?? 0,
+          selectedDate?.getMonth() ?? 0,
+          selectedDate?.getDate() ?? 0
         )
       );
     } else {
@@ -86,8 +89,8 @@ const ModeDiary = ({
             mode="single"
             captionLayout="dropdown-buttons"
             className="bg-card-muted mb-2 rounded-lg border"
-            selected={date}
-            onSelect={setDate}
+            selected={selectedDate}
+            onSelect={setSelectedDate}
             fromYear={1960}
             toYear={2030}
             disabled={(date) =>
@@ -96,7 +99,7 @@ const ModeDiary = ({
           />
         )}
       </SidebarMenuItem>
-      <SidebarMenuButton onClick={() => setDate(new Date())}>
+      <SidebarMenuButton onClick={() => setSelectedDate(new Date())}>
         <House size={16} />
         今日のルームを表示
       </SidebarMenuButton>

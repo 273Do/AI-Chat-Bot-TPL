@@ -22,8 +22,13 @@ export const RoomSlice = createSlice({
       state.room_name = action.payload?.room_name;
       state.room_mode = action.payload?.room_mode;
     },
+    resetRoomInfo: (state) => {
+      state.room_id = null;
+      state.room_name = null;
+      state.room_mode = null;
+    },
   },
 });
 
-export const { setRoomInfo } = RoomSlice.actions;
+export const { setRoomInfo, resetRoomInfo } = RoomSlice.actions;
 export default RoomSlice.reducer;
