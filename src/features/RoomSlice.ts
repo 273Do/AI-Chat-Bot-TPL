@@ -2,14 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface InitialRoomState {
-  // 仮で数字を入れている
-  room_id: number | null;
+  room_id: string | null;
   room_name: string | null;
+  room_mode: number | null;
 }
 
 const initialState: InitialRoomState = {
   room_id: null,
   room_name: null,
+  room_mode: null,
 };
 
 export const RoomSlice = createSlice({
@@ -19,9 +20,15 @@ export const RoomSlice = createSlice({
     setRoomInfo: (state, action: PayloadAction<InitialRoomState>) => {
       state.room_id = action.payload?.room_id;
       state.room_name = action.payload?.room_name;
+      state.room_mode = action.payload?.room_mode;
+    },
+    resetRoomInfo: (state) => {
+      state.room_id = null;
+      state.room_name = null;
+      state.room_mode = null;
     },
   },
 });
 
-export const { setRoomInfo } = RoomSlice.actions;
+export const { setRoomInfo, resetRoomInfo } = RoomSlice.actions;
 export default RoomSlice.reducer;

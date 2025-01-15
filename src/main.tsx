@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { Provider } from "react-redux";
 
 import { createRoot } from "react-dom/client";
@@ -11,12 +10,12 @@ import { Toaster } from "./components/ui/toaster.tsx";
 
 // ルートコンポーネント
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-        <App />
-        <Toaster />
-      </ThemeProvider>
-    </Provider>
-  </StrictMode>
+  // <StrictMode>
+  <Provider store={store}>
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <App />
+      <Toaster />
+    </ThemeProvider>
+  </Provider>
+  // </StrictMode>
 );

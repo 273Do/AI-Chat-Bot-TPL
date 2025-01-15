@@ -6,6 +6,7 @@ export interface InitialUserState {
     photURL: string;
     email: string;
     displayName: string;
+    userDocId: string;
   };
 }
 

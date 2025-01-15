@@ -2,8 +2,7 @@ import React from "react";
 
 import { EllipsisVertical, Pencil, Trash2 } from "lucide-react";
 
-import { SidebarMenuAction } from "@/components/ui/sidebar";
-
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,9 +15,9 @@ const HoverEdit = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <SidebarMenuAction className="hover:bg-transparent ">
-          <EllipsisVertical size={16} className="ml-5 text-muted-foreground" />
-        </SidebarMenuAction>
+        <Button className="bg-transparent p-0 opacity-50 hover:bg-transparent hover:opacity-100">
+          <EllipsisVertical size={16} className="text-muted-foreground" />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="right" align="start">
         <DropdownMenuItem>

@@ -29,25 +29,24 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { RoomType } from "../../demo-rooms-types";
-import roomsData from "../../demo-rooms.json";
+// import roomsData from "../../demo-rooms.json";
 import Room from "../Room";
+import { RoomsType } from "../type";
+
+import groupByDate from "@/functions/formatGroupByDate";
 
 // defaultモード時のサイドバー表示
-const ModeDefault = ({ isOpen }: { isOpen: boolean }) => {
-  // const roomsData: RoomType[] = roomsData;
+const ModeDefault = ({
+  isOpen,
+  rooms,
+}: {
+  isOpen: boolean;
+  rooms: RoomsType[];
+}) => {
+  //  roomから日付ごとにグループ化し，時間の新しいものを上に表示する
+  const groupedByDate = groupByDate(rooms);
 
-  const groupedByDate = roomsData
-    .slice()
-    .reverse()
-    .reduce((acc: { [key: string]: RoomType[] }, item) => {
-      const date = item.updated; // 日付でグループ化
-      if (!acc[date]) {
-        acc[date] = []; // 新しい日付のキーを初期化
-      }
-      acc[date].push(item as RoomType); // 同じ日付に追加
-      return acc;
-    }, {});
+  console.log(groupedByDate);
 
   return (
     <>
@@ -60,9 +59,9 @@ const ModeDefault = ({ isOpen }: { isOpen: boolean }) => {
                 <HoverCard>
                   <HoverCardTrigger>
                     <SidebarMenuButton className="text-xs text-muted-foreground">
-                      {groupedByDate[date][0].mode === "default" ? (
+                      {groupedByDate[date][0].room.mode === 0 ? (
                         <MessageSquare size={16} />
-                      ) : groupedByDate[date][0].mode === "diary" ? (
+                      ) : groupedByDate[date][0].room.mode === 2 ? (
                         <Calendar size={16} />
                       ) : (
                         <MessageSquareQuote size={16} />
@@ -85,15 +84,15 @@ const ModeDefault = ({ isOpen }: { isOpen: boolean }) => {
             </CollapsibleTrigger>
             <CollapsibleContent>
               <SidebarMenuSub>
-                {groupedByDate[date].map((room: RoomType) =>
-                  room.prompt ? (
+                {groupedByDate[date].map((room: RoomsType) =>
+                  room.room.mode == 1 ? (
                     <TooltipProvider key={room.id}>
                       <Tooltip>
                         <TooltipTrigger>
                           <Room {...room} />
                         </TooltipTrigger>
                         <TooltipContent className="z-50 w-60 p-3 text-xs">
-                          <p>{room.prompt}</p>
+                          <p>{room.room.prompt}</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
