@@ -17,12 +17,18 @@ const Header = () => {
         <Separator orientation="vertical" className="mx-2 h-6" />
         {/* <MessageSquare size={16} />
          */}
-        {roomInfo.room_mode === 0 ? (
-          <MessageSquare size={16} />
-        ) : roomInfo.room_mode === 2 ? (
-          <Calendar size={16} />
+        {roomInfo.room_mode === null ? (
+          <></>
         ) : (
-          <MessageSquareQuote size={16} />
+          <div className="ml-2">
+            {roomInfo.room_mode === 0 ? (
+              <MessageSquare size={16} />
+            ) : roomInfo.room_mode === 2 ? (
+              <Calendar size={16} />
+            ) : (
+              <MessageSquareQuote size={16} />
+            )}
+          </div>
         )}
         <p className="ml-2">{roomInfo.room_name}</p>
       </div>

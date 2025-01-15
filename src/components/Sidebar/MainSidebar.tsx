@@ -45,7 +45,7 @@ const MainSidebar = () => {
             {rooms && (
               <SidebarMenu>
                 {roomMode === 2 ? (
-                  <SB.ModeDiary isOpen={open} />
+                  <SB.ModeDiary isOpen={open} rooms={rooms} />
                 ) : (
                   <SB.ModeDefault isOpen={open} rooms={rooms} />
                 )}

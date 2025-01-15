@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 
-import { addDoc, collection } from "firebase/firestore";
 import { SquarePen } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -18,30 +17,25 @@ import { Label } from "@/components/ui/label";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
-import { db } from "@/firebase/firebase";
+import useCreateRoom from "@/functions/useCreateRoom";
 
+//
 const CreateRoomComponent = () => {
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
-  const userDocId = useAppSelector(
-    (state: RootState) => state.user.user?.userDocId
-  );
 
-  const [titleInput, setTitleInput] = useState<string>("");
+  const [roomName, setRoomName] = useState<string>("");
   const promptRef = useRef<HTMLInputElement>(null);
+
+  const { createRoom } = useCreateRoom();
 
   // ルームを作成する処理
   const handleSubmit = async () => {
-    if (!userDocId) {
-      return;
-    }
+    let prompt = "";
+    if (promptRef.current) prompt = promptRef.current.value;
 
-    await addDoc(collection(db, "users", userDocId, "rooms"), {
-      roomName: titleInput,
-      prompt: promptRef.current ? promptRef.current.value : "",
-      mode: roomMode,
-      createdAt: new Date(),
-    });
-    setTitleInput("");
+    await createRoom(roomName, prompt, new Date());
+
+    setRoomName("");
   };
 
   return (
@@ -59,7 +53,7 @@ const CreateRoomComponent = () => {
             <Label htmlFor="room-title">ルーム名</Label>
             <Input
               id="room-title"
-              onChange={(e) => setTitleInput(e.target.value)}
+              onChange={(e) => setRoomName(e.target.value)}
             />
           </div>
           {roomMode === 1 && (
@@ -74,7 +68,7 @@ const CreateRoomComponent = () => {
             <Button
               type="submit"
               onClick={handleSubmit}
-              disabled={!titleInput.match(/\S/g)}
+              disabled={!roomName.match(/\S/g)}
             >
               新しいルームを作成する
             </Button>
