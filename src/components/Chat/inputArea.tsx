@@ -13,7 +13,7 @@ const InputArea = () => {
     <div className="mb-7 flex size-full items-end justify-center  text-center text-xl">
       <div className="flex w-[400px] items-end">
         <Textarea
-          // placeholder="Tell us a little bit about yourself"
+          // placeholder="メッセージを送信する"
           className="resize-none"
           // {...field}
 

@@ -60,7 +60,6 @@ const AIMessage = ({ id, message }: MessagesType) => {
         <div className="max-w-[550px] rounded-lg border border-muted-foreground p-2 text-primary">
           <p>{message.message}</p>
         </div>
-        {/* <p className="text-xs">{message.createdAt.split(" ")[1].slice(0, 5)}</p> */}
         <p className="text-xs">
           {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}
         </p>

@@ -11,7 +11,6 @@ const UserMessage = ({ id, message }: MessagesType) => {
 
   return (
     <div className="flex items-end gap-1">
-      {/* <p className="text-xs">{message.createdAt.split(" ")[1].slice(0, 5)}</p> */}
       <p className="text-xs">
         {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}
       </p>

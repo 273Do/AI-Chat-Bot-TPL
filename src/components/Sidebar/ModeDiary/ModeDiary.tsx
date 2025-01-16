@@ -47,7 +47,7 @@ const ModeDiary = ({
 
     // MEMO: 選択した日付のルームがない場合は対応したルームを作成する
     if (!existRoom) {
-      // 選択した日付が
+      // 選択した日付がundefined場合は処理を終了
       if (selectedDate === undefined) return;
 
       // ルーム名を日付にする

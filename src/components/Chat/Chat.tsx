@@ -6,8 +6,7 @@ import useMessageCollection from "@/hooks/useMessageCollection";
 
 // チャットコンポーネント
 const Chat = () => {
-  // const messages = demoMsgs;
-
+  // ルームのメッセージ情報を取得
   const { messageDocuments: messages } = useMessageCollection();
 
   // ルームのメッセージ情報を取得

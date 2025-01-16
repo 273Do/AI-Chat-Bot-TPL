@@ -15,8 +15,6 @@ const Header = () => {
       <div className="mx-3 flex h-12 items-center">
         <SidebarTrigger />
         <Separator orientation="vertical" className="mx-2 h-6" />
-        {/* <MessageSquare size={16} />
-         */}
         {roomInfo.room_mode === null ? (
           <></>
         ) : (

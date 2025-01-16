@@ -31,7 +31,7 @@ const MainSidebar = () => {
   // ユーザのルーム情報を取得
   const { roomDocuments: rooms } = useRoomCollection();
   console.log(rooms);
-  // TODO: 取得したルームを表示するようにする
+
   return (
     <>
       <SB.Header />
