@@ -1,17 +1,22 @@
 import React from "react";
 
 import * as MSG from "./index";
-import demoMsgs from "../demos-messages.json";
+
+import useMessageCollection from "@/hooks/useMessageCollection";
 
 // チャットコンポーネント
 const Chat = () => {
-  const messages = demoMsgs;
+  // const messages = demoMsgs;
+
+  const { messageDocuments: messages } = useMessageCollection();
+
+  // ルームのメッセージ情報を取得
 
   return (
     <div className="m-2">
       {messages.map((item) => (
-        <div key={item.uuid} className="my-4 flex justify-end">
-          {item.AIModel === null ? (
+        <div key={item.id} className="my-4 flex justify-end">
+          {item.message.AIModel === "" ? (
             <MSG.UserMessage {...item} />
           ) : (
             <MSG.AIMessage {...item} />

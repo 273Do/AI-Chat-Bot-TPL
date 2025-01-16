@@ -1,6 +1,9 @@
+/* eslint-disable import/named */
+import { DocumentData } from "firebase/firestore";
+
 interface MessagesType {
-  id: number;
-  message: string;
+  id: string;
+  message: DocumentData;
 }
 
 export type { MessagesType };

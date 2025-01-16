@@ -69,7 +69,7 @@ const ModeDiary = ({
       // ルーム情報をstateに保存
       dispatch(
         setRoomInfo({
-          room_id: existRoom.room.id,
+          room_id: existRoom.id,
           room_name: existRoom.room.roomName,
           room_mode: existRoom.room.mode,
         })
