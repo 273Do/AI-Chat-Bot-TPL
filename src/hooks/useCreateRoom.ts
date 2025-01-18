@@ -13,26 +13,24 @@ const useCreateRoom = () => {
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
   const dispatch = useAppDispatch();
 
+  // ユーザのルーム情報を取得するためのコレクション参照
+  const roomRef = collection(db, "users", userDocId ?? "", "rooms");
+
   // ルームを作成する関数
   const createRoom = async (
     roomName: string,
     prompt: string,
     createdAt: Date
   ) => {
-    if (!userDocId) {
-      return;
-    }
+    if (!userDocId) return;
 
     // dbにルームを作成
-    const createRoomDoc = await addDoc(
-      collection(db, "users", userDocId, "rooms"),
-      {
-        roomName: roomName,
-        prompt: prompt,
-        mode: roomMode,
-        createdAt: createdAt,
-      }
-    );
+    const createRoomDoc = await addDoc(roomRef, {
+      roomName,
+      prompt,
+      mode: roomMode,
+      createdAt: createdAt,
+    });
 
     // ルーム情報をstateに保存
     dispatch(

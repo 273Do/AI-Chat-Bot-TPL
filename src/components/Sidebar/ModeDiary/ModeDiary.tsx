@@ -13,7 +13,7 @@ import { RoomsType } from "../type";
 
 import { useAppDispatch } from "@/app/hooks";
 import { setRoomInfo } from "@/features/RoomSlice";
-import useCreateRoom from "@/functions/useCreateRoom";
+import useCreateRoom from "@/hooks/useCreateRoom";
 
 // ダイアリーモード時のサイドバー表示
 const ModeDiary = ({

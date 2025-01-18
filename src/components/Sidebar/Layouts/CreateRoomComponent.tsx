@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
-import useCreateRoom from "@/functions/useCreateRoom";
+import useCreateRoom from "@/hooks/useCreateRoom";
 
 //
 const CreateRoomComponent = () => {

@@ -17,12 +17,12 @@ const useMessageCollection = () => {
   );
 
   // 現在のルームのドキュメントIDを取得
-  const roomId = useAppSelector((state: RootState) => state.room.room_id);
+  const roomDocId = useAppSelector((state: RootState) => state.room.room_id);
 
   // ルームのメッセージ情報を取得するためのコレクション参照
   const messageRef =
-    userDocId && roomId
-      ? collection(db, "users", userDocId, "rooms", roomId, "messages")
+    userDocId && roomDocId
+      ? collection(db, "users", userDocId, "rooms", roomDocId, "messages")
       : null;
 
   // ルームの全メッセージを取得してstateに保存
@@ -41,7 +41,7 @@ const useMessageCollection = () => {
         setMessageDocuments(messagesResult.reverse());
       });
     }
-  }, [roomId]);
+  }, [roomDocId]);
 
   return { messageDocuments };
 };
