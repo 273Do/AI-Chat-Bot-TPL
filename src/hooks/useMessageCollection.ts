@@ -36,14 +36,9 @@ const useMessageCollection = () => {
             id: doc.id,
             message: doc.data(),
           });
-          // 順番を逆にする
-          setMessageDocuments(messagesResult.reverse());
         });
-
-        // メッセージがない場合は空の配列をセット
-        if (messagesResult.length === 0) {
-          setMessageDocuments([]);
-        }
+        // 順番を逆にする
+        setMessageDocuments(messagesResult.reverse());
       });
     }
   }, [roomId]);

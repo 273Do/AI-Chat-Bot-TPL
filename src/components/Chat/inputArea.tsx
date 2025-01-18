@@ -10,7 +10,7 @@ const InputArea = () => {
   const [input, setInput] = useState<string>("");
 
   return (
-    <div className="mb-7 flex size-full items-end justify-center  text-center text-xl">
+    <div className="mb-7 flex size-full items-end justify-center text-center text-xl">
       <div className="flex w-[400px] items-end">
         <Textarea
           // placeholder="メッセージを送信する"
