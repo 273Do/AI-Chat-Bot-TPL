@@ -28,14 +28,10 @@ const MainSidebar = () => {
 
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
 
-  const userDocId = useAppSelector(
-    (state: RootState) => state.user.user?.userDocId
-  );
-
   // ユーザのルーム情報を取得
-  const { roomDocuments: rooms } = useRoomCollection(userDocId ?? "");
+  const { roomDocuments: rooms } = useRoomCollection();
   console.log(rooms);
-  // TODO: 取得したルームを表示するようにする
+
   return (
     <>
       <SB.Header />

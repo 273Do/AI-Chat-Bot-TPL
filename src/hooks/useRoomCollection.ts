@@ -2,14 +2,22 @@ import { useEffect, useState } from "react";
 
 import { collection, onSnapshot } from "firebase/firestore";
 
+import { useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
 import { RoomsType } from "@/components/Sidebar/type";
 import { db } from "@/firebase/firebase";
 
 // ユーザのルーム情報を取得するカスタムフック
-const useRoomCollection = (userDocId: string) => {
+const useRoomCollection = () => {
   const [roomDocuments, setRoomDocuments] = useState<RoomsType[]>([]);
 
-  const roomRef = collection(db, "users", userDocId, "rooms");
+  //  ログインしているユーザのドキュメントIDを取得
+  const userDocId = useAppSelector(
+    (state: RootState) => state.user.user?.userDocId
+  );
+
+  // ユーザのルーム情報を取得するためのコレクション参照
+  const roomRef = collection(db, "users", userDocId ?? "", "rooms");
 
   // ユーザの全ルームを取得してstateに保存
   useEffect(() => {

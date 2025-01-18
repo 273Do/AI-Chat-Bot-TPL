@@ -13,7 +13,7 @@ import { RoomsType } from "../type";
 
 import { useAppDispatch } from "@/app/hooks";
 import { setRoomInfo } from "@/features/RoomSlice";
-import useCreateRoom from "@/functions/useCreateRoom";
+import useCreateRoom from "@/hooks/useCreateRoom";
 
 // ダイアリーモード時のサイドバー表示
 const ModeDiary = ({
@@ -47,7 +47,7 @@ const ModeDiary = ({
 
     // MEMO: 選択した日付のルームがない場合は対応したルームを作成する
     if (!existRoom) {
-      // 選択した日付が
+      // 選択した日付がundefined場合は処理を終了
       if (selectedDate === undefined) return;
 
       // ルーム名を日付にする
@@ -69,7 +69,7 @@ const ModeDiary = ({
       // ルーム情報をstateに保存
       dispatch(
         setRoomInfo({
-          room_id: existRoom.room.id,
+          room_id: existRoom.id,
           room_name: existRoom.room.roomName,
           room_mode: existRoom.room.mode,
         })
