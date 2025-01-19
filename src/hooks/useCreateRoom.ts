@@ -2,6 +2,7 @@ import { addDoc, collection } from "firebase/firestore";
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
+import { errorToast } from "@/components/Toast/toast";
 import { setRoomInfo } from "@/features/RoomSlice";
 import { db } from "@/firebase/firebase";
 
@@ -22,7 +23,11 @@ const useCreateRoom = () => {
     prompt: string,
     createdAt: Date
   ) => {
-    if (!userDocId) return;
+    // エラー処理
+    if (!userDocId) {
+      errorToast("エラー", "ユーザが見つかりませんでした。");
+      return;
+    }
 
     // dbにルームを作成
     const createRoomDoc = await addDoc(roomRef, {

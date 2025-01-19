@@ -6,6 +6,7 @@ import { MessagesType } from "../type";
 const AIMessage = ({ id, message }: MessagesType) => {
   // 時間と分を取得
   const date = message.createdAt.toDate();
+  const date_string = date.toLocaleDateString().replace(/\//g, "-");
   const hours = date.getHours();
   const minutes = date.getMinutes();
 
@@ -58,10 +59,11 @@ const AIMessage = ({ id, message }: MessagesType) => {
       </div>
       <div className="ml-2 flex w-full items-end justify-start gap-1">
         <div className="max-w-[550px] rounded-lg border border-muted-foreground p-2 text-primary">
-          <p>{message.message}</p>
+          <p className="whitespace-pre-wrap">{message.message}</p>
         </div>
-        <p className="text-xs">
-          {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}
+        <p className="gap-1 text-xs">
+          {date_string} {String(hours).padStart(2, "0")}:
+          {String(minutes).padStart(2, "0")}
         </p>
       </div>
     </>

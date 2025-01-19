@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
@@ -25,11 +25,16 @@ const useMessageCollection = () => {
       ? collection(db, "users", userDocId, "rooms", roomDocId, "messages")
       : null;
 
+  // メッセージを作成日時の降順で取得
+  const messageRefOrderBy = messageRef
+    ? query(messageRef, orderBy("createdAt", "desc"))
+    : null;
+
   // ルームの全メッセージを取得してstateに保存
   useEffect(() => {
     console.log("fetching messages");
-    if (messageRef) {
-      onSnapshot(messageRef, (messageSnapshot) => {
+    if (messageRefOrderBy) {
+      onSnapshot(messageRefOrderBy, (messageSnapshot) => {
         const messagesResult: MessagesType[] = [];
         messageSnapshot.docs.forEach((doc) => {
           messagesResult.push({

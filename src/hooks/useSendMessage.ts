@@ -2,6 +2,7 @@ import { addDoc, collection } from "firebase/firestore";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
+import { errorToast } from "@/components/Toast/toast";
 import { db } from "@/firebase/firebase";
 
 // メッセージを送信するカスタムフック
@@ -22,7 +23,11 @@ const useSendMessage = () => {
 
   // メッセージを作成する関数
   const sendMessage = async (message: string, AIModel: string) => {
-    if (!messageRef) return;
+    // エラー処理
+    if (!messageRef) {
+      errorToast("エラー", "ルームまたはユーザが見つかりませんでした。");
+      return;
+    }
 
     // dbにルームを作成
     await addDoc(messageRef, {
