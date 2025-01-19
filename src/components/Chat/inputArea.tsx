@@ -5,6 +5,7 @@ import { ArrowUp } from "lucide-react";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
+import { GoogleDocsPublicContent } from "@/functions/fetchPrompt";
 import useSendMessage from "@/hooks/useSendMessage";
 
 // チャット入力コンポーネント
@@ -48,6 +49,9 @@ const InputArea = () => {
           onClick={handleClick}
         >
           <ArrowUp size={16} strokeWidth={3} />
+        </Button>
+        <Button onClick={() => GoogleDocsPublicContent()}>
+          プロンプト確認
         </Button>
       </div>
     </div>
