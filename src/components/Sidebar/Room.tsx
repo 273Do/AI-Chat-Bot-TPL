@@ -30,6 +30,7 @@ const Room = ({ id, room }: RoomsType) => {
                 room_id: id,
                 room_name: room.roomName,
                 room_mode: room.mode,
+                room_prompt: room.prompt,
               })
             )
           }
