@@ -15,7 +15,7 @@ const Chat = () => {
     <div className="m-2">
       {messages.map((item) => (
         <div key={item.id} className="my-4 flex justify-end">
-          {item.message.AIModel === "" ? (
+          {item.message.AIModel === null ? (
             <MSG.UserMessage {...item} />
           ) : (
             <MSG.AIMessage {...item} />

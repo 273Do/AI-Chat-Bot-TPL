@@ -17,7 +17,6 @@ export const GoogleDocsPublicContent = async () => {
     const contents = (
       doc.getElementsByClassName("doc-content")[0] as HTMLElement
     )?.innerText;
-    console.log(contents);
     return { success: true, contents };
   } catch (error) {
     errorToast("エラー", "プロンプトの取得に失敗しました。");
