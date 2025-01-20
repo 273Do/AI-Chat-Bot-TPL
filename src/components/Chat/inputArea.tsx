@@ -6,6 +6,8 @@ import { errorToast } from "../Toast/toast";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
+import { fetchGeminiResponse } from "@/functions/fetchAIRes/fetchGeminiResponse";
+import GoogleDocsPublicContent from "@/functions/fetchPrompt";
 import useAI from "@/hooks/useAI";
 import useSendMessage from "@/hooks/useSendMessage";
 
@@ -36,9 +38,9 @@ const InputArea = () => {
     const messageDocId = await createAIMessage();
 
     // AIのレスポンスを取得
-    const AIResponse = await fetchAIResponse(input);
+    const AIResponse = await fetchAIResponse(messageDocId, input);
 
-    if (messageDocId && AIResponse) {
+    if (AIResponse) {
       // AIのメッセージを更新
       await updateAIMessage(messageDocId, AIResponse);
     } else {
@@ -50,7 +52,9 @@ const InputArea = () => {
   };
 
   const test = async () => {
+    const { success, prompt } = await GoogleDocsPublicContent();
     console.log("test");
+    fetchGeminiResponse(input, prompt);
   };
 
   return (

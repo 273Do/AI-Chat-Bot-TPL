@@ -1,4 +1,10 @@
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
@@ -54,7 +60,17 @@ const useSendMessage = () => {
     });
   };
 
-  return { sendMessage, updateMessage };
+  // メッセージを削除する関数
+  const deleteMessage = async (messageDocId: string) => {
+    if (!messageRef) {
+      errorToast("エラー", "ルームまたはユーザが見つかりませんでした。");
+      return;
+    }
+
+    await deleteDoc(doc(messageRef, messageDocId));
+  };
+
+  return { sendMessage, updateMessage, deleteMessage };
 };
 
 export default useSendMessage;
