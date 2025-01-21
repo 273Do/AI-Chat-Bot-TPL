@@ -3,8 +3,9 @@ import useSendMessage from "./useSendMessage";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { errorToast } from "@/components/Toast/toast";
-import { fetchGeminiResponse } from "@/functions/fetchAIRes/fetchGeminiResponse";
-import { fetchOpenAIResponse } from "@/functions/fetchAIRes/fetchOpenAIResponse";
+import { fetchClaudeResponse } from "@/functions/fetchAIResponse/fetchClaudeResponse";
+import { fetchGeminiResponse } from "@/functions/fetchAIResponse/fetchGeminiResponse";
+import { fetchOpenAIResponse } from "@/functions/fetchAIResponse/fetchOpenAIResponse";
 import GoogleDocsPublicContent from "@/functions/fetchPrompt";
 
 // AIのレスポンスを返すカスタムフック
@@ -46,7 +47,7 @@ const useAI = () => {
           res = await fetchGeminiResponse(input, prompt);
         } else {
           // Claudeのレスポンスを取得
-          // res = await fetchOpenAIResponse(input, _contents);
+          res = await fetchClaudeResponse(input, prompt);
         }
 
         console.log("contents", res);

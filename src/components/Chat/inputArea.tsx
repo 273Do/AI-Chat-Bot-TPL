@@ -6,7 +6,8 @@ import { errorToast } from "../Toast/toast";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
-import { fetchGeminiResponse } from "@/functions/fetchAIRes/fetchGeminiResponse";
+import { useAppSelector } from "@/app/hooks";
+import { fetchClaudeResponse } from "@/functions/fetchAIResponse/fetchClaudeResponse";
 import GoogleDocsPublicContent from "@/functions/fetchPrompt";
 import useAI from "@/hooks/useAI";
 import useSendMessage from "@/hooks/useSendMessage";
@@ -15,6 +16,8 @@ import useSendMessage from "@/hooks/useSendMessage";
 const InputArea = () => {
   const [input, setInput] = useState<string>("");
   const [isTextareaActive, setIsTextareaActive] = useState<boolean>(true);
+
+  const roomDocId = useAppSelector((state) => state.room.room_id);
 
   // メッセージ送信処理を行うカスタムフック
   const { sendMessage } = useSendMessage();
@@ -45,6 +48,10 @@ const InputArea = () => {
       await updateAIMessage(messageDocId, AIResponse);
     } else {
       errorToast("エラー", "AIのレスポンスが取得できませんでした。");
+      await updateAIMessage(
+        messageDocId,
+        "AIのレスポンスが取得できませんでした。"
+      );
     }
 
     // テキストエリアを有効化
@@ -54,7 +61,7 @@ const InputArea = () => {
   const test = async () => {
     const { success, prompt } = await GoogleDocsPublicContent();
     console.log("test");
-    fetchGeminiResponse(input, prompt);
+    fetchClaudeResponse(input, prompt);
   };
 
   return (
@@ -65,7 +72,7 @@ const InputArea = () => {
           className="resize-none"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          disabled={!isTextareaActive}
+          disabled={!isTextareaActive || !roomDocId}
         />
         <Button
           className="ml-2 p-3"
