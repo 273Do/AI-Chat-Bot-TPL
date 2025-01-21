@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -55,7 +56,7 @@ const AIMessage = ({ id, message }: MessagesType) => {
   return (
     <>
       <div
-        className={`flex size-10 items-center justify-center rounded-full border p-2 text-white ${border_color}`}
+        className={`mt-[2px] flex size-10 items-center justify-center rounded-full border p-2 text-white ${border_color}`}
       >
         {ai_icon}
       </div>
@@ -63,7 +64,10 @@ const AIMessage = ({ id, message }: MessagesType) => {
         {message.message ? (
           <>
             <div className="max-w-[550px] rounded-lg border border-muted-foreground p-2 text-primary">
-              <p className="whitespace-pre-wrap">{message.message}</p>
+              <ReactMarkdown className="ai-message">
+                {/* className="whitespace-pre-wrap" */}
+                {message.message}
+              </ReactMarkdown>
             </div>
             <p className="gap-1 text-xs">
               {date_string} {String(hours).padStart(2, "0")}:

@@ -149,3 +149,109 @@
 .rdp-vhidden {
   @apply hidden;
 }
+
+.ai-message {
+  font-size: 16px;
+  line-height: 1.6;
+  border-radius: 8px;
+  overflow-wrap: break-word;
+}
+
+/* Headers */
+.ai-message h1 {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.ai-message h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.ai-message h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Paragraphs and Text */
+.ai-message p {
+  margin-bottom: 16px;
+}
+
+/* Links */
+.ai-message a {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.ai-message a:hover {
+  text-decoration: underline;
+}
+
+/* Code blocks */
+.ai-message pre {
+  border: 1px solid hsl(var(--muted-foreground));
+  background: #09090b;
+  color: #fafafa;
+  border-radius: 0.5rem;
+  padding: 12px;
+  overflow-x: auto;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 16px;
+}
+
+.ai-message code {
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95em;
+}
+
+/* Lists */
+.ai-message ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.ai-message ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.ai-message li {
+  margin-bottom: 8px;
+}
+
+/* Blockquotes */
+.ai-message blockquote {
+  border-left: 4px solid #3182ce;
+  padding-left: 12px;
+  margin-left: 0;
+  color: #4a5568;
+
+  font-style: italic;
+}
+
+/* Tables */
+.ai-message table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.ai-message th,
+.ai-message td {
+  border: 1px solid hsl(var(--primary));
+  padding: 8px;
+  text-align: left;
+}
+
+.ai-message th {
+  border: 1px solid hsl(var(--primary));
+  font-weight: bold;
+}
