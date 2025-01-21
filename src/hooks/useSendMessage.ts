@@ -1,4 +1,10 @@
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
@@ -22,22 +28,49 @@ const useSendMessage = () => {
       : null;
 
   // メッセージを作成する関数
-  const sendMessage = async (message: string, AIModel: string) => {
+  const sendMessage = async (message: string, AIModel: number | null) => {
     // エラー処理
     if (!messageRef) {
       errorToast("エラー", "ルームまたはユーザが見つかりませんでした。");
       return;
     }
 
-    // dbにルームを作成
-    await addDoc(messageRef, {
+    // dbにメッセージを作成
+    const createMessageDoc = await addDoc(messageRef, {
       message,
       AIModel,
       createdAt: new Date(),
     });
+
+    return createMessageDoc.id;
   };
 
-  return { sendMessage };
+  // メッセージを更新する関数
+  const updateMessage = async (message: string, messageDocId: string) => {
+    // エラー処理
+    if (!messageRef) {
+      errorToast("エラー", "ルームまたはユーザが見つかりませんでした。");
+      return;
+    }
+
+    // dbのメッセージを更新
+    const messageDocRef = doc(messageRef, messageDocId);
+    await updateDoc(messageDocRef, {
+      message,
+    });
+  };
+
+  // メッセージを削除する関数
+  const deleteMessage = async (messageDocId: string) => {
+    if (!messageRef) {
+      errorToast("エラー", "ルームまたはユーザが見つかりませんでした。");
+      return;
+    }
+
+    await deleteDoc(doc(messageRef, messageDocId));
+  };
+
+  return { sendMessage, updateMessage, deleteMessage };
 };
 
 export default useSendMessage;

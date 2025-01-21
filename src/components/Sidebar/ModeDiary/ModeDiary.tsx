@@ -72,6 +72,7 @@ const ModeDiary = ({
           room_id: existRoom.id,
           room_name: existRoom.room.roomName,
           room_mode: existRoom.room.mode,
+          room_prompt: existRoom.room.prompt,
         })
       );
     }

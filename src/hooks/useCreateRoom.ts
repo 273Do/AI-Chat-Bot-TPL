@@ -43,6 +43,7 @@ const useCreateRoom = () => {
         room_id: createRoomDoc.id,
         room_name: roomName,
         room_mode: roomMode,
+        room_prompt: prompt,
       })
     );
   };
