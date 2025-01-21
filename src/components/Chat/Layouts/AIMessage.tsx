@@ -63,7 +63,7 @@ const AIMessage = ({ id, message }: MessagesType) => {
       <div className="ml-2 flex w-full items-end justify-start gap-1">
         {message.message ? (
           <>
-            <div className="max-w-[550px] rounded-lg border border-muted-foreground p-2 text-primary">
+            <div className="max-w-[550px] rounded-lg border border-muted-foreground p-2 pb-0 text-primary">
               <ReactMarkdown className="ai-message">
                 {/* className="whitespace-pre-wrap" */}
                 {message.message}

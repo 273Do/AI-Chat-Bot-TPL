@@ -4,9 +4,10 @@ import { errorToast } from "@/components/Toast/toast";
 const docUrl = import.meta.env.VITE_APP_GOOGLE_DOCS_LINK;
 
 // Google Docsからプロンプトを取得する関数
-export const GoogleDocsPublicContent = async () => {
+export const GoogleDocsPublicContent = async (room_prompt: string) => {
   let success = true;
   let prompt = "";
+
   try {
     const response = await fetch(docUrl);
     const html = await response.text();
@@ -21,6 +22,10 @@ export const GoogleDocsPublicContent = async () => {
   } catch (error) {
     errorToast("エラー", "プロンプトの取得に失敗しました。");
     success = false;
+  }
+
+  if (room_prompt !== "") {
+    prompt = prompt + "\n追加プロンプト：" + room_prompt;
   }
   return { success, prompt };
 };

@@ -7,7 +7,6 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
 import { useAppSelector } from "@/app/hooks";
-import { fetchClaudeResponse } from "@/functions/fetchAIResponse/fetchClaudeResponse";
 import GoogleDocsPublicContent from "@/functions/fetchPrompt";
 import useAI from "@/hooks/useAI";
 import useSendMessage from "@/hooks/useSendMessage";
@@ -59,9 +58,9 @@ const InputArea = () => {
   };
 
   const test = async () => {
-    const { success, prompt } = await GoogleDocsPublicContent();
+    const { success, prompt } = await GoogleDocsPublicContent("");
     console.log("test");
-    fetchClaudeResponse(input, prompt);
+    fetchAIResponse(input, prompt);
   };
 
   return (

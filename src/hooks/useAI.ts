@@ -18,6 +18,11 @@ const useAI = () => {
     (state: RootState) => state.LLMSetting.llm_id
   );
 
+  // 選択中のルームのプロンプトを取得
+  const room_prompt = useAppSelector(
+    (state: RootState) => state.room.room_prompt
+  );
+
   // AIのメッセージを作成する関数
   const createAIMessage = async () => {
     const messageDocId = await sendMessage("", selectedLLMId);
@@ -33,7 +38,11 @@ const useAI = () => {
   const fetchAIResponse = async (messageDocId: string, input: string) => {
     try {
       // プロンプトの取得
-      const { success, prompt } = await GoogleDocsPublicContent();
+      const { success, prompt } = await GoogleDocsPublicContent(
+        room_prompt ?? ""
+      );
+
+      console.log("prompt", prompt);
 
       if (!success) {
         throw new Error("プロンプトの取得に失敗しました。");
