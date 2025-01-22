@@ -1,6 +1,6 @@
 import React from "react";
 
-import { EllipsisVertical, Trash2 } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 
 import { Button } from "../ui/button";
 import {
@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import DeleteRoom from "./Layouts/DeleteRoom";
 import EditRoom from "./Layouts/EditRoom";
 import { RoomsType } from "./type";
 
@@ -25,11 +26,8 @@ const EditMenu = (room_info: RoomsType) => {
         <DropdownMenuItem asChild>
           <EditRoom {...room_info} />
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <div className="flex items-center gap-2">
-            <Trash2 size={16} />
-            ルームを削除
-          </div>
+        <DropdownMenuItem asChild>
+          <DeleteRoom {...room_info} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

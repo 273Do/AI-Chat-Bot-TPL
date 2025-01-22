@@ -8,7 +8,7 @@ import {
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
-import { errorToast } from "@/components/Toast/toast";
+import { errorToast, successToast } from "@/components/Toast/toast";
 import { resetRoomInfo, setRoomInfo } from "@/features/RoomSlice";
 import { db } from "@/firebase/firebase";
 
@@ -35,30 +35,34 @@ const useCreateRoom = () => {
       return;
     }
 
-    // dbにルームを作成
-    const createRoomDoc = await addDoc(roomRef, {
-      roomName,
-      prompt,
-      mode: roomMode,
-      createdAt: createdAt,
-    });
+    try {
+      // dbにルームを作成
+      const createRoomDoc = await addDoc(roomRef, {
+        roomName,
+        prompt,
+        mode: roomMode,
+        createdAt: createdAt,
+      });
 
-    // ルーム情報をstateに保存
-    dispatch(
-      setRoomInfo({
-        room_id: createRoomDoc.id,
-        room_name: roomName,
-        room_mode: roomMode,
-        room_prompt: prompt,
-      })
-    );
+      // ルーム情報をstateに保存
+      dispatch(
+        setRoomInfo({
+          room_id: createRoomDoc.id,
+          room_name: roomName,
+          room_mode: roomMode,
+          room_prompt: prompt,
+        })
+      );
+      successToast("✅ 成功", "ルームを作成しました。");
+    } catch (error) {
+      errorToast("エラー", "ルームの作成に失敗しました。");
+    }
   };
 
   // ルームを更新する関数
   const updateRoom = async (
     roomName: string,
     prompt: string,
-    roomMode_: number,
     roomId: string
   ) => {
     // エラー処理
@@ -67,22 +71,18 @@ const useCreateRoom = () => {
       return;
     }
 
-    // dbのルームを更新
-    const roomDocRef = doc(roomRef, roomId);
-    await updateDoc(roomDocRef, {
-      roomName,
-      prompt,
-    });
+    try {
+      // dbのルームを更新
+      const roomDocRef = doc(roomRef, roomId);
+      await updateDoc(roomDocRef, {
+        roomName,
+        prompt,
+      });
 
-    // ルーム情報をstateに保存
-    dispatch(
-      setRoomInfo({
-        room_id: roomId,
-        room_name: roomName,
-        room_mode: roomMode_,
-        room_prompt: prompt,
-      })
-    );
+      successToast("✅ 成功", "ルーム更新しました。");
+    } catch (error) {
+      errorToast("エラー", "ルームの更新に失敗しました。");
+    }
   };
 
   // ルームを削除する関数
@@ -92,7 +92,11 @@ const useCreateRoom = () => {
       return;
     }
 
-    await deleteDoc(doc(roomRef, roomId));
+    try {
+      await deleteDoc(doc(roomRef, roomId));
+    } catch (error) {
+      errorToast("エラー", "ルームの削除に失敗しました。");
+    }
 
     // ルーム情報をリセット
     dispatch(resetRoomInfo());

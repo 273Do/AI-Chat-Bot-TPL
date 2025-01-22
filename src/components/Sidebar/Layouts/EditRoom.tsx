@@ -31,7 +31,7 @@ const EditRoom = ({ id, room }: RoomsType) => {
     let prompt = "";
     if (promptRef.current) prompt = promptRef.current.value;
 
-    await updateRoom(roomName, prompt, room.mode, id);
+    await updateRoom(roomName, prompt, id);
 
     setRoomName("");
   };
