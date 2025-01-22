@@ -54,7 +54,7 @@ const useAI = () => {
         else if (selectedLLMId == 1) {
           // Geminiのレスポンスを取得
           res = await fetchGeminiResponse(input, prompt);
-        } else {
+        } else if (selectedLLMId == 2) {
           // Claudeのレスポンスを取得
           res = await fetchClaudeResponse(input, prompt);
         }

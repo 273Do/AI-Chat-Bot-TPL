@@ -1,9 +1,16 @@
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
-import { errorToast } from "@/components/Toast/toast";
-import { setRoomInfo } from "@/features/RoomSlice";
+import { errorToast, successToast } from "@/components/Toast/toast";
+import { resetRoomInfo, setRoomInfo } from "@/features/RoomSlice";
 import { db } from "@/firebase/firebase";
 
 // ルーム作成を行うカスタムフック
@@ -29,26 +36,97 @@ const useCreateRoom = () => {
       return;
     }
 
-    // dbにルームを作成
-    const createRoomDoc = await addDoc(roomRef, {
-      roomName,
-      prompt,
-      mode: roomMode,
-      createdAt: createdAt,
-    });
+    try {
+      // dbにルームを作成
+      const createRoomDoc = await addDoc(roomRef, {
+        roomName,
+        prompt,
+        mode: roomMode,
+        createdAt: createdAt,
+      });
 
-    // ルーム情報をstateに保存
-    dispatch(
-      setRoomInfo({
-        room_id: createRoomDoc.id,
-        room_name: roomName,
-        room_mode: roomMode,
-        room_prompt: prompt,
-      })
-    );
+      // ルーム情報をstateに保存
+      dispatch(
+        setRoomInfo({
+          room_id: createRoomDoc.id,
+          room_name: roomName,
+          room_mode: roomMode,
+          room_prompt: prompt,
+        })
+      );
+      successToast("✅ 成功", "ルームを作成しました。");
+    } catch (error) {
+      errorToast("エラー", "ルームの作成に失敗しました。");
+    }
   };
 
-  return { createRoom };
+  // ルームを更新する関数
+  const updateRoom = async (
+    roomName: string,
+    prompt: string,
+    roomId: string
+  ) => {
+    // エラー処理
+    if (!userDocId) {
+      errorToast("エラー", "ユーザが見つかりませんでした。");
+      return;
+    }
+
+    try {
+      // dbのルームを更新
+      const roomDocRef = doc(roomRef, roomId);
+      await updateDoc(roomDocRef, {
+        roomName,
+        prompt,
+      });
+
+      successToast("✅ 成功", "ルーム更新しました。");
+    } catch (error) {
+      errorToast("エラー", "ルームの更新に失敗しました。");
+    }
+  };
+
+  // ルームを削除する関数
+  const deleteRoom = async (roomId: string) => {
+    if (!userDocId) {
+      errorToast("エラー", "ユーザが見つかりませんでした。");
+      return;
+    }
+
+    try {
+      await deleteDoc(doc(roomRef, roomId));
+    } catch (error) {
+      errorToast("エラー", "ルームの削除に失敗しました。");
+    }
+
+    // ルーム情報をリセット
+    dispatch(resetRoomInfo());
+  };
+
+  // ルームを全削除する関数
+  const deleteAllRooms = async () => {
+    if (!userDocId) {
+      errorToast("エラー", "ユーザが見つかりませんでした。");
+      return;
+    }
+
+    try {
+      const roomSnapshot = await getDocs(roomRef);
+      if (roomSnapshot.empty) {
+        errorToast("エラー", "ルームが存在しません。");
+        return;
+      }
+      roomSnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+      // ルーム情報をリセット
+      dispatch(resetRoomInfo());
+      successToast("✅ 成功", "ルームを全削除しました。");
+    } catch (error) {
+      errorToast("エラー", "ルームの削除に失敗しました。");
+    }
+  };
+  return { createRoom, updateRoom, deleteRoom, deleteAllRooms };
 };
 
 export default useCreateRoom;

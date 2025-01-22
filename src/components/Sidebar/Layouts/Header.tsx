@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Bot, ChevronsUpDown, Trash2 } from "lucide-react";
+import { Bot, ChevronsUpDown } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -15,13 +15,17 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
+import DeleteALlRooms from "./DeleteAllRooms";
+
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
-import CreateRoomComponent from "@/components/Sidebar/Layouts/CreateRoomComponent";
+import CreateRoom from "@/components/Sidebar/Layouts/CreateRoom";
 
 // サイドバーのヘッダー
 const Header = () => {
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
+
+  const serviceName = import.meta.env.VITE_APP_SERVICE_NAME;
 
   return (
     <SidebarHeader>
@@ -30,24 +34,23 @@ const Header = () => {
           {roomMode === 2 ? (
             <SidebarMenuButton>
               <Bot />
-              ChatBot
+              {serviceName}
             </SidebarMenuButton>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
                   <Bot />
-                  ChatBot
+                  {serviceName}
                   <ChevronsUpDown className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent side="right" className="w-44">
                 <DropdownMenuItem asChild>
-                  <CreateRoomComponent />
+                  <CreateRoom />
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Trash2 />
-                  <p>ルームを全削除</p>
+                <DropdownMenuItem asChild>
+                  <DeleteALlRooms />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

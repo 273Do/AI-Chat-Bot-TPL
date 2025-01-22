@@ -14,6 +14,7 @@ import {
 
 // ログイン画面のサイドバー
 const LoginSidebar = () => {
+  const serviceName = import.meta.env.VITE_APP_SERVICE_NAME;
   return (
     <>
       <SidebarHeader>
@@ -21,7 +22,7 @@ const LoginSidebar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton>
               <Bot />
-              ChatBot
+              {serviceName}
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

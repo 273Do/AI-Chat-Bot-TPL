@@ -35,14 +35,18 @@ const useSendMessage = () => {
       return;
     }
 
-    // dbにメッセージを作成
-    const createMessageDoc = await addDoc(messageRef, {
-      message,
-      AIModel,
-      createdAt: new Date(),
-    });
-
-    return createMessageDoc.id;
+    try {
+      // dbにメッセージを作成
+      const createMessageDoc = await addDoc(messageRef, {
+        message,
+        AIModel,
+        createdAt: new Date(),
+      });
+      return createMessageDoc.id;
+    } catch (error) {
+      errorToast("エラー", "メッセージの送信に失敗しました。");
+      return "";
+    }
   };
 
   // メッセージを更新する関数
@@ -67,7 +71,11 @@ const useSendMessage = () => {
       return;
     }
 
-    await deleteDoc(doc(messageRef, messageDocId));
+    try {
+      await deleteDoc(doc(messageRef, messageDocId));
+    } catch (error) {
+      errorToast("エラー", "メッセージの削除に失敗しました。");
+    }
   };
 
   return { sendMessage, updateMessage, deleteMessage };

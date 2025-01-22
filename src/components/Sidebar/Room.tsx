@@ -7,14 +7,16 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
-import HoverEdit from "./HoverEdit";
+import EditMenu from "./EditMenu";
 import { RoomsType } from "./type";
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { setRoomInfo } from "@/features/RoomSlice";
 
 // defaultモード時のルーム表示コンポーネント
-const Room = ({ id, room }: RoomsType) => {
+const Room = (room_info: RoomsType) => {
+  const { id, room } = room_info;
+
   const dispatch = useAppDispatch();
   const room_id = useAppSelector((state) => state.room.room_id);
 
@@ -46,7 +48,7 @@ const Room = ({ id, room }: RoomsType) => {
             <span>{room.roomName}</span>
           </a>
         </SidebarMenuSubButton>
-        <HoverEdit />
+        <EditMenu {...room_info} />
       </SidebarMenuSubItem>
     </>
   );

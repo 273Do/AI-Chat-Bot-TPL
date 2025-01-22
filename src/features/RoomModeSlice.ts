@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+import { saveSettingsLocally } from "@/functions/saveSettingsLocally";
+
 interface InitialRoomModeState {
   mode: number;
 }
@@ -15,6 +17,7 @@ export const RoomModeSlice = createSlice({
   reducers: {
     setRoomMode: (state, action: PayloadAction<number>) => {
       state.mode = action.payload;
+      saveSettingsLocally("room-mode", state.mode);
     },
   },
 });
