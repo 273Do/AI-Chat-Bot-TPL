@@ -3,6 +3,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDocs,
   updateDoc,
 } from "firebase/firestore";
 
@@ -102,7 +103,30 @@ const useCreateRoom = () => {
     dispatch(resetRoomInfo());
   };
 
-  return { createRoom, updateRoom, deleteRoom };
+  // ルームを全削除する関数
+  const deleteAllRooms = async () => {
+    if (!userDocId) {
+      errorToast("エラー", "ユーザが見つかりませんでした。");
+      return;
+    }
+
+    try {
+      const roomSnapshot = await getDocs(roomRef);
+      if (roomSnapshot.empty) {
+        errorToast("エラー", "ルームが存在しません。");
+        return;
+      }
+      roomSnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+      // ルーム情報をリセット
+      dispatch(resetRoomInfo());
+      successToast("✅ 成功", "ルームを全削除しました。");
+    } catch (error) {
+      errorToast("エラー", "ルームの削除に失敗しました。");
+    }
+  };
+  return { createRoom, updateRoom, deleteRoom, deleteAllRooms };
 };
 
 export default useCreateRoom;

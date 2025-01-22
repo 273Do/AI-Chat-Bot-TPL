@@ -45,6 +45,8 @@ const useMessageCollection = () => {
         // 順番を逆にする
         setMessageDocuments(messagesResult.reverse());
       });
+    } else {
+      setMessageDocuments([]);
     }
   }, [roomDocId]);
 

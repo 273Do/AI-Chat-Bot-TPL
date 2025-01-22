@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Bot, ChevronsUpDown, Trash2 } from "lucide-react";
+import { Bot, ChevronsUpDown } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -14,6 +14,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
+import DeleteALlRooms from "./DeleteAllRooms";
 
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
@@ -45,9 +47,8 @@ const Header = () => {
                 <DropdownMenuItem asChild>
                   <CreateRoom />
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Trash2 />
-                  <p>ルームを全削除</p>
+                <DropdownMenuItem asChild>
+                  <DeleteALlRooms />
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
