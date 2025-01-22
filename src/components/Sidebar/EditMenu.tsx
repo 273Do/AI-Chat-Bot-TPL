@@ -1,6 +1,6 @@
 import React from "react";
 
-import { EllipsisVertical, Pencil, Trash2 } from "lucide-react";
+import { EllipsisVertical, Trash2 } from "lucide-react";
 
 import { Button } from "../ui/button";
 import {
@@ -9,9 +9,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import EditRoom from "./Layouts/EditRoom";
+import { RoomsType } from "./type";
 
-// サイドバーをホバーしたときに表示される編集メニュー
-const HoverEdit = () => {
+// ルーム横のアイコンをクリックすると表示される編集メニュー
+const EditMenu = (room_info: RoomsType) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -20,11 +22,8 @@ const HoverEdit = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="right" align="start">
-        <DropdownMenuItem>
-          <div className="flex items-center gap-2">
-            <Pencil />
-            タイトルを編集
-          </div>
+        <DropdownMenuItem asChild>
+          <EditRoom {...room_info} />
         </DropdownMenuItem>
         <DropdownMenuItem>
           <div className="flex items-center gap-2">
@@ -37,4 +36,4 @@ const HoverEdit = () => {
   );
 };
 
-export default HoverEdit;
+export default EditMenu;

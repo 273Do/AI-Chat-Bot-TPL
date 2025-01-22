@@ -15,25 +15,23 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { useAppSelector } from "@/app/hooks";
-import { RootState } from "@/app/store";
+import { RoomsType } from "../type";
+
 import useCreateRoom from "@/hooks/useCreateRoom";
 
-//
-const CreateRoomComponent = () => {
-  const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
-
-  const [roomName, setRoomName] = useState<string>("");
+// ルームを編集するコンポーネント
+const EditRoom = ({ id, room }: RoomsType) => {
+  const [roomName, setRoomName] = useState<string>(room.roomName);
   const promptRef = useRef<HTMLInputElement>(null);
 
-  const { createRoom } = useCreateRoom();
+  const { updateRoom } = useCreateRoom();
 
-  // ルームを作成する処理
+  // ルームを更新する処理
   const handleSubmit = async () => {
     let prompt = "";
     if (promptRef.current) prompt = promptRef.current.value;
 
-    await createRoom(roomName, prompt, new Date());
+    await updateRoom(roomName, prompt, room.mode, id);
 
     setRoomName("");
   };
@@ -42,11 +40,11 @@ const CreateRoomComponent = () => {
     <Dialog>
       <DialogTrigger className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors hover:bg-muted">
         <SquarePen size={16} />
-        <p>新しいルームを作成</p>
+        <p>ルームを編集</p>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>新しいルームを作成</DialogTitle>
+          <DialogTitle>ルームを編集</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
@@ -54,12 +52,13 @@ const CreateRoomComponent = () => {
             <Input
               id="room-title"
               onChange={(e) => setRoomName(e.target.value)}
+              defaultValue={roomName}
             />
           </div>
-          {roomMode === 1 && (
+          {room.mode === 1 && (
             <div className="flex flex-col gap-2">
               <Label htmlFor="prompt">プロンプト</Label>
-              <Input id="prompt" ref={promptRef} />
+              <Input id="prompt" ref={promptRef} defaultValue={room.prompt} />
             </div>
           )}
         </div>
@@ -70,7 +69,7 @@ const CreateRoomComponent = () => {
               onClick={handleSubmit}
               disabled={!roomName.match(/\S/g)}
             >
-              新しいルームを作成する
+              ルーム情報を更新する
             </Button>
           </DialogClose>
         </DialogFooter>
@@ -79,4 +78,4 @@ const CreateRoomComponent = () => {
   );
 };
 
-export default CreateRoomComponent;
+export default EditRoom;
