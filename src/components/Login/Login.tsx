@@ -8,6 +8,8 @@ import { googleSignInWithPopup } from "@/firebase/Google/auth_google_signin_popu
 
 // ログイン画面
 const Login = () => {
+  const serviceName = import.meta.env.VITE_APP_SERVICE_NAME;
+
   // Googleでログイン
   const googleSignIn = async () => {
     await googleSignInWithPopup();
@@ -24,7 +26,7 @@ const Login = () => {
         <SidebarTrigger />
       </div>
       <div className="-mt-12 flex size-full flex-col items-center justify-center gap-3">
-        <p className="text-2xl font-bold">ChatBot</p>
+        <p className="text-2xl font-bold"> {serviceName}</p>
         <p className=" text-sm text-muted-foreground">
           外部アカウントでログイン
         </p>

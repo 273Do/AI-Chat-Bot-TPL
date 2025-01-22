@@ -25,6 +25,8 @@ import CreateRoom from "@/components/Sidebar/Layouts/CreateRoom";
 const Header = () => {
   const roomMode = useAppSelector((state: RootState) => state.roomMode.mode);
 
+  const serviceName = import.meta.env.VITE_APP_SERVICE_NAME;
+
   return (
     <SidebarHeader>
       <SidebarMenu>
@@ -32,14 +34,14 @@ const Header = () => {
           {roomMode === 2 ? (
             <SidebarMenuButton>
               <Bot />
-              ChatBot
+              {serviceName}
             </SidebarMenuButton>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
                   <Bot />
-                  ChatBot
+                  {serviceName}
                   <ChevronsUpDown className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
