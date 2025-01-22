@@ -70,7 +70,8 @@ function App() {
 
   return (
     <>
-      <SidebarProvider defaultOpen>
+      <SidebarProvider>
+        {/* defaultOpenは設定していない */}
         <AppSidebar />
         <main className="w-full">{user ? <ChatScreen /> : <Login />}</main>
       </SidebarProvider>
