@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+import { saveSettingsLocally } from "@/functions/saveSettingsLocally";
+
 interface InitialLLMSettingState {
   llm_id: number;
 }
@@ -15,6 +17,7 @@ export const LLMSettingSlice = createSlice({
   reducers: {
     setLLMSetting: (state, action: PayloadAction<number>) => {
       state.llm_id = action.payload;
+      saveSettingsLocally("llm", state.llm_id);
     },
   },
 });

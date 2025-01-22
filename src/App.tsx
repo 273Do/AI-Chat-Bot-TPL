@@ -9,27 +9,24 @@ import { useAppDispatch, useAppSelector } from "./app/hooks";
 import ChatScreen from "./components/Chat/ChatScreen";
 import Login from "./components/Login/Login";
 import { errorToast, successToast } from "./components/Toast/toast";
+import { setLLMSetting } from "./features/LLMSettingSlice";
+import { setRoomMode } from "./features/RoomModeSlice";
 import { resetRoomInfo } from "./features/RoomSlice";
 import { login, logout } from "./features/UserSlice";
 import { auth } from "./firebase/firebase";
+import { getSettingsLocally } from "./functions/saveSettingsLocally";
 
 import { AppSidebar } from "@/components/Sidebar/app-sidebar";
 import fetchUserDocId from "@/functions/fetchUserDocId";
 
 //メインコンポーネント
 function App() {
-  // const user = null;
   const user = useAppSelector((state) => state.user.user);
-
   const dispatch = useAppDispatch();
 
   // ユーザーのログイン状態を監視
   // レンダリング時に一度だけ実行
   useEffect(() => {
-    // 以前のonAuthStateChangedの書き方
-    // auth.onAuthStateChanged((loginUser) => {});
-
-    // 最新のonAuthStateChangedの書き方
     // ログイン状態が変わるたびにコールバック(中の処理)が呼び出される
     onAuthStateChanged(auth, async (loginUser) => {
       console.log(loginUser);
@@ -50,8 +47,17 @@ function App() {
             })
           );
 
+          // ローカルストレージから取得
+          // llmの初期設定
+          const llm_id = getSettingsLocally("llm");
+          dispatch(setLLMSetting(llm_id ?? 0));
+
+          // ルームモードの初期設定
+          const room_mode = getSettingsLocally("room-mode");
+          dispatch(setRoomMode(room_mode ?? 0));
+
           successToast(
-            loginUser.providerData[0].providerId.replace(".com", ""),
+            "✅ " + loginUser.providerData[0].providerId.replace(".com", ""),
             "ログインしました。"
           );
         } catch (err) {
