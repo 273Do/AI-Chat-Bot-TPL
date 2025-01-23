@@ -38,22 +38,18 @@ const InputArea = () => {
     // AIのメッセージを作成
     const messageDocId = await createAIMessage();
 
-    if (messageDocId === "") {
-      return;
-    } else {
-      // AIのレスポンスを取得
-      const AIResponse = await fetchAIResponse(messageDocId, input);
+    // AIのレスポンスを取得
+    const AIResponse = await fetchAIResponse(input);
 
-      if (AIResponse) {
-        // AIのメッセージを更新
-        await updateAIMessage(messageDocId, AIResponse);
-      } else {
-        errorToast("エラー", "AIのレスポンスが取得できませんでした。");
-        await updateAIMessage(
-          messageDocId,
-          "AIのレスポンスが取得できませんでした。"
-        );
-      }
+    if (AIResponse && messageDocId !== "") {
+      // AIのメッセージを更新
+      await updateAIMessage(messageDocId, AIResponse);
+    } else {
+      errorToast("エラー", "AIのレスポンスが取得できませんでした。");
+      await updateAIMessage(
+        messageDocId,
+        "AIのレスポンスが取得できませんでした。"
+      );
     }
 
     // テキストエリアを有効化

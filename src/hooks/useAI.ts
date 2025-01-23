@@ -36,7 +36,7 @@ const useAI = () => {
   };
 
   // AIのレスポンスを取得する関数
-  const fetchAIResponse = async (messageDocId: string, input: string) => {
+  const fetchAIResponse = async (input: string) => {
     try {
       // プロンプトの取得
       const { success, prompt } = await GoogleDocsPublicContent(
