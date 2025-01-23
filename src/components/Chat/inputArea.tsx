@@ -7,7 +7,6 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
 import { useAppSelector } from "@/app/hooks";
-import GoogleDocsPublicContent from "@/functions/fetchPrompt";
 import useAI from "@/hooks/useAI";
 import useSendMessage from "@/hooks/useSendMessage";
 
@@ -61,12 +60,6 @@ const InputArea = () => {
     setIsTextareaActive(true);
   };
 
-  const test = async () => {
-    const { success, prompt } = await GoogleDocsPublicContent("");
-    console.log("test");
-    fetchAIResponse(input, prompt);
-  };
-
   return (
     <div className="mb-7 flex size-full items-end justify-center text-center text-xl">
       <div className="flex w-[400px] items-end">
@@ -84,8 +77,6 @@ const InputArea = () => {
         >
           <ArrowUp size={16} strokeWidth={3} />
         </Button>
-
-        <Button onClick={() => test()}>AI</Button>
       </div>
     </div>
   );

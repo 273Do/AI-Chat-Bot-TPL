@@ -13,9 +13,11 @@ export default {
         gpt: "var(--gpt)",
         gemini: "var(--gemini)",
         claude: "var(--claude)",
+        deepseek: "var(--deepseek)",
         gptsecondary: "var(--gpt-secondary)",
         geminisecondary: "var(--gemini-secondary)",
         claudesecondary: "var(--claude-secondary)",
+        deepseeksecondary: "var(--deepseek-secondary)",
 
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

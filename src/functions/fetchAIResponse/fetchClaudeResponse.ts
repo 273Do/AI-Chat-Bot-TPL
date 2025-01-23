@@ -6,6 +6,9 @@ const anthropic = new Anthropic({
   dangerouslyAllowBrowser: true, // 注意: ブラウザでの使用を許可
 });
 
+// モデルの指定
+const model = import.meta.env.VITE_APP_CLAUDE_MODEL;
+
 // Claudeのレスポンスを取得する関数
 export const fetchClaudeResponse = async (input: string, prompt: string) => {
   const request =
@@ -13,7 +16,7 @@ export const fetchClaudeResponse = async (input: string, prompt: string) => {
 
   // プロンプトとチャットの入力を用いてAIのレスポンスを取得
   const response = await anthropic.messages.create({
-    model: "claude-3-5-sonnet-20241022",
+    model,
     max_tokens: 1024,
     messages: [{ role: "user", content: request }],
   });

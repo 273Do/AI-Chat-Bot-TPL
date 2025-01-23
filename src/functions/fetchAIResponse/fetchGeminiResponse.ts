@@ -4,7 +4,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_APP_GEMINI_API_KEY);
 
 // モデルの指定
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({
+  model: import.meta.env.VITE_APP_GEMINI_MODEL,
+});
 
 // Geminiのレスポンスを取得する関数
 export const fetchGeminiResponse = async (input: string, prompt: string) => {

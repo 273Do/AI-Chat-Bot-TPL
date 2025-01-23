@@ -54,9 +54,11 @@
     --gpt: #412991;
     --gemini: #8e75b2;
     --claude: #d97757;
+    --deepseek: #5570ff;
     --gpt-secondary: #412991c7;
     --gemini-secondary: #8e75b2b9;
     --claude-secondary: #d97857a8;
+    --deepseek-secondary: #7b90f7;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -95,9 +97,11 @@
     --gpt: #412991;
     --gemini: #8e75b2;
     --claude: #d97757;
+    --deepseek: #5570ff;
     --gpt-secondary: #41299196;
     --gemini-secondary: #8e75b298;
     --claude-secondary: #d97757a4;
+    --deepseek-secondary: #25399a;
   }
 }
 

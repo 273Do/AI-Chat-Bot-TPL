@@ -4,6 +4,7 @@ import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { errorToast } from "@/components/Toast/toast";
 import { fetchClaudeResponse } from "@/functions/fetchAIResponse/fetchClaudeResponse";
+import { fetchDeepSeekResponse } from "@/functions/fetchAIResponse/fetchDeepSeekResponse";
 import { fetchGeminiResponse } from "@/functions/fetchAIResponse/fetchGeminiResponse";
 import { fetchOpenAIResponse } from "@/functions/fetchAIResponse/fetchOpenAIResponse";
 import GoogleDocsPublicContent from "@/functions/fetchPrompt";
@@ -57,6 +58,9 @@ const useAI = () => {
         } else if (selectedLLMId == 2) {
           // Claudeのレスポンスを取得
           res = await fetchClaudeResponse(input, prompt);
+        } else {
+          // DeepSeekのレスポンスを取得
+          res = await fetchDeepSeekResponse(input, prompt);
         }
 
         console.log("contents", res);
@@ -67,8 +71,6 @@ const useAI = () => {
         error instanceof Error ? error.message : "不明なエラーが発生しました。";
       // deleteMessage(messageDocId);
 
-      // 失敗した場合はメッセージを更新
-      await updateMessage(String(error), messageDocId);
       errorToast("エラー", errorMessage);
     }
   };

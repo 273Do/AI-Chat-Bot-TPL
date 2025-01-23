@@ -1,16 +1,18 @@
 import OpenAI from "openai";
 
-// OpenAIの初期化
+// MEMO: DeepSeek APIはOpenAIと互換性のあるAPI形式を採用している．
+// DeepSeekの初期化
 const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_APP_OPENAI_API_KEY,
+  baseURL: "https://api.deepseek.com",
+  apiKey: import.meta.env.VITE_APP_DEEPSEEK_API_KEY,
   dangerouslyAllowBrowser: true, // 注意: ブラウザでの使用を許可
 });
 
 // モデルの指定
-const model = import.meta.env.VITE_APP_OPENAI_MODEL;
+const model = import.meta.env.VITE_APP_DEEPSEEK_MODEL;
 
-// OpenAIのレスポンスを取得する関数
-export const fetchOpenAIResponse = async (input: string, prompt: string) => {
+// DeepSeekのレスポンスを取得する関数
+export const fetchDeepSeekResponse = async (input: string, prompt: string) => {
   // プロンプトとチャットの入力を用いてAIのレスポンスを取得
   const response = await openai.chat.completions.create({
     model,
