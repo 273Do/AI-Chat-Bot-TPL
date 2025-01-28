@@ -56,6 +56,11 @@ const InputArea = () => {
     setIsTextareaActive(true);
   };
 
+  // const test = async () => {
+  //   const AIResponse = await fetchAIResponse(input);
+  //   console.log(AIResponse);
+  // };
+
   return (
     <div className="mb-7 flex size-full items-end justify-center text-center text-xl">
       <div className="flex w-[400px] items-end">
@@ -73,6 +78,13 @@ const InputArea = () => {
         >
           <ArrowUp size={16} strokeWidth={3} />
         </Button>
+        {/* <Button
+          className="ml-2 p-3"
+          disabled={!input.match(/\S/g)}
+          onClick={test}
+        >
+          AI
+        </Button> */}
       </div>
     </div>
   );
