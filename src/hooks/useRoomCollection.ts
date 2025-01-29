@@ -21,7 +21,7 @@ const useRoomCollection = () => {
 
   // ユーザの全ルームを取得してstateに保存
   useEffect(() => {
-    console.log("fetching rooms");
+    // console.log("fetching rooms");
     onSnapshot(roomRef, (roomSnapshot) => {
       const roomsResult: RoomsType[] = [];
       roomSnapshot.docs.forEach((doc) => {

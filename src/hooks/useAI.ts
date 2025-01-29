@@ -46,7 +46,7 @@ const useAI = () => {
       //   throw new Error("プロンプトが取得できませんでした。");
       //   return;
       // } else {
-      console.log("prompt", prompt);
+      // console.log("prompt", prompt);
 
       const res = await fetch(
         `${import.meta.env.VITE_APP_BACKEND_URL}/${llm_list[selectedLLMId]}`,
@@ -65,7 +65,7 @@ const useAI = () => {
       const result = await res.json();
       const ai_msg = result.message;
 
-      console.log("contents", ai_msg);
+      // console.log("contents", ai_msg);
       return ai_msg;
       // }
     } catch (error: unknown) {

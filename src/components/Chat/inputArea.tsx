@@ -58,7 +58,7 @@ const InputArea = () => {
 
   // const test = async () => {
   //   const AIResponse = await fetchAIResponse(input);
-  //   console.log(AIResponse);
+  //   // console.log(AIResponse);
   // };
 
   return (

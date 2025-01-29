@@ -28,13 +28,13 @@ const fetchUserDocId = async (uid: string): Promise<string> => {
 
     if (!usersSnapshot.empty) {
       // ユーザーが存在する場合はドキュメントIDを取得
-      console.log("データあり");
+      // console.log("データあり");
       const userDoc = usersSnapshot.docs[0];
       userDocId = userDoc.id;
     } else {
       // ユーザが存在しない場合はユーザを作成する処理を記述する
-      console.log("データなし");
-      console.log("ユーザを作成する");
+      // console.log("データなし");
+      // console.log("ユーザを作成する");
       // dbにユーザを作成する
       const createUserDoc = await addDoc(collection(db, "users"), {
         userId: uid,
@@ -42,7 +42,7 @@ const fetchUserDocId = async (uid: string): Promise<string> => {
       userDocId = createUserDoc.id;
     }
   } catch (error) {
-    console.error("Error fetching user document:", error);
+    // console.error("Error fetching user document:", error);
     userDocId = ""; // エラー時も空文字列を返す
   }
 
