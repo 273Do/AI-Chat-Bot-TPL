@@ -29,12 +29,12 @@ function App() {
   useEffect(() => {
     // ログイン状態が変わるたびにコールバック(中の処理)が呼び出される
     onAuthStateChanged(auth, async (loginUser) => {
-      console.log(loginUser);
+      // console.log(loginUser);
       if (loginUser) {
         try {
           // 非同期でログインしているユーザのドキュメントIDを取得
           const userDocId = await fetchUserDocId(loginUser.uid);
-          console.log(userDocId);
+          // console.log(userDocId);
 
           // ユーザー情報をReduxに保存
           dispatch(

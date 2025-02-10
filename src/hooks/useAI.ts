@@ -3,10 +3,10 @@ import useSendMessage from "./useSendMessage";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { errorToast } from "@/components/Toast/toast";
-import { fetchClaudeResponse } from "@/functions/fetchAIResponse/fetchClaudeResponse";
-import { fetchGeminiResponse } from "@/functions/fetchAIResponse/fetchGeminiResponse";
-import { fetchOpenAIResponse } from "@/functions/fetchAIResponse/fetchOpenAIResponse";
-import GoogleDocsPublicContent from "@/functions/fetchPrompt";
+// import GoogleDocsPublicContent from "@/functions/fetchPrompt";
+
+// LLMのリスト
+const llm_list = ["openai", "gemini", "claude", "deepseek"];
 
 // AIのレスポンスを返すカスタムフック
 const useAI = () => {
@@ -35,40 +35,44 @@ const useAI = () => {
   };
 
   // AIのレスポンスを取得する関数
-  const fetchAIResponse = async (messageDocId: string, input: string) => {
+  const fetchAIResponse = async (input: string) => {
     try {
       // プロンプトの取得
-      const { success, prompt } = await GoogleDocsPublicContent(
-        room_prompt ?? ""
+      // const { success, prompt } = await GoogleDocsPublicContent(
+      //   room_prompt ?? ""
+      // );
+
+      // if (!room_prompt) {
+      //   throw new Error("プロンプトが取得できませんでした。");
+      //   return;
+      // } else {
+      // console.log("prompt", prompt);
+
+      const res = await fetch(
+        `${import.meta.env.VITE_APP_BACKEND_URL}/${llm_list[selectedLLMId]}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            input,
+            room_prompt,
+          }),
+        }
       );
 
-      console.log("prompt", prompt);
+      const result = await res.json();
+      const ai_msg = result.message;
 
-      if (!success) {
-        throw new Error("プロンプトの取得に失敗しました。");
-      } else {
-        let res: string = "";
-        if (selectedLLMId == 0)
-          // OpenAIのレスポンスを取得
-          res = await fetchOpenAIResponse(input, prompt);
-        else if (selectedLLMId == 1) {
-          // Geminiのレスポンスを取得
-          res = await fetchGeminiResponse(input, prompt);
-        } else if (selectedLLMId == 2) {
-          // Claudeのレスポンスを取得
-          res = await fetchClaudeResponse(input, prompt);
-        }
-
-        console.log("contents", res);
-        return res;
-      }
+      // console.log("contents", ai_msg);
+      return ai_msg;
+      // }
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "不明なエラーが発生しました。";
       // deleteMessage(messageDocId);
 
-      // 失敗した場合はメッセージを更新
-      await updateMessage(String(error), messageDocId);
       errorToast("エラー", errorMessage);
     }
   };

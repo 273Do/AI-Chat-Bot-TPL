@@ -30,7 +30,7 @@ const MainSidebar = () => {
 
   // ユーザのルーム情報を取得
   const { roomDocuments: rooms } = useRoomCollection();
-  console.log(rooms);
+  // console.log(rooms);
 
   return (
     <>

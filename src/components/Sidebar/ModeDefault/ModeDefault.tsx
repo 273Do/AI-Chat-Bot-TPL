@@ -46,7 +46,7 @@ const ModeDefault = ({
   //  roomから日付ごとにグループ化し，時間の新しいものを上に表示する
   const groupedByDate = groupByDate(rooms);
 
-  console.log(groupedByDate);
+  // console.log(groupedByDate);
 
   return (
     <>

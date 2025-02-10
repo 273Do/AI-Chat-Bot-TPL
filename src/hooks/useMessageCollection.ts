@@ -32,7 +32,7 @@ const useMessageCollection = () => {
 
   // ルームの全メッセージを取得してstateに保存
   useEffect(() => {
-    console.log("fetching messages");
+    // console.log("fetching messages");
     if (messageRefOrderBy) {
       onSnapshot(messageRefOrderBy, (messageSnapshot) => {
         const messagesResult: MessagesType[] = [];
