@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Bot, ChevronsUpDown } from "lucide-react";
 
 import {

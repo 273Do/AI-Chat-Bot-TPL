@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Calendar, MessageSquare, MessageSquareQuote } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";

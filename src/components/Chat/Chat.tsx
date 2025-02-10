@@ -1,5 +1,3 @@
-import React from "react";
-
 import * as MSG from "./index";
 
 import useMessageCollection from "@/hooks/useMessageCollection";

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { signOut } from "firebase/auth";
 import { ChevronsUpDown, LogOut } from "lucide-react";
 

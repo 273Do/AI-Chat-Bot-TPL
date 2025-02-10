@@ -1,4 +1,3 @@
-import React from "react";
 import ReactMarkdown from "react-markdown";
 
 import { Skeleton } from "@/components/ui/skeleton";
@@ -6,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MessagesType } from "../type";
 
 // AIのメッセージコンポーネント
-const AIMessage = ({ id, message }: MessagesType) => {
+const AIMessage = ({ message }: MessagesType) => {
   // 時間と分を取得
   const date = message.createdAt.toDate();
   const date_string = date.toLocaleDateString().replace(/\//g, "-");

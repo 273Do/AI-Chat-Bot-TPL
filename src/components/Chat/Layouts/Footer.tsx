@@ -1,5 +1,3 @@
-import React from "react";
-
 import InputArea from "../inputArea";
 
 // チャット画面のフッター

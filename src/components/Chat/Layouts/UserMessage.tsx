@@ -1,9 +1,7 @@
-import React from "react";
-
 import { MessagesType } from "../type";
 
 // ユーザーのメッセージコンポーネント
-const UserMessage = ({ id, message }: MessagesType) => {
+const UserMessage = ({ message }: MessagesType) => {
   // 時間と分を取得
   const date = message.createdAt.toDate();
   const date_string = date.toLocaleDateString().replace(/\//g, "-");

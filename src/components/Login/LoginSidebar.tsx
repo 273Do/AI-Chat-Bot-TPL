@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Bot } from "lucide-react";
 
 import { ThemeToggle } from "../theme-toggle";

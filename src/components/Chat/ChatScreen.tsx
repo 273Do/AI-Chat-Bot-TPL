@@ -1,5 +1,3 @@
-import React from "react";
-
 import Chat from "./Chat";
 import * as CS from "./index";
 

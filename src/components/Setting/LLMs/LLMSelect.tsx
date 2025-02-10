@@ -1,5 +1,3 @@
-import React from "react";
-
 import LLMItem from "./LLMItem";
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";

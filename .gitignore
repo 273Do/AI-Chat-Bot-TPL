@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .env
+
+build
+.firebase
+.firebaserc

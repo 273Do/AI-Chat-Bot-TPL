@@ -11,7 +11,7 @@ const llm_list = ["openai", "gemini", "claude", "deepseek"];
 // AIのレスポンスを返すカスタムフック
 const useAI = () => {
   // メッセージ送信処理を行うカスタムフック
-  const { sendMessage, updateMessage, deleteMessage } = useSendMessage();
+  const { sendMessage, updateMessage } = useSendMessage();
 
   // 選択したLLMのIDを取得
   const selectedLLMId = useAppSelector(
